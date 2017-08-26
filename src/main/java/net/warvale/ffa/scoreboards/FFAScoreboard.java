@@ -36,7 +36,7 @@ public class FFAScoreboard {
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
         Objective objective = scoreboard.registerNewObjective("game", "dummy");
 
-        objective.setDisplayName(ChatColor.DARK_GRAY + "» " + ChatColor.DARK_RED + "Devoted" + ChatColor.GOLD + "FFA" + ChatColor.DARK_GRAY + " «" );
+        objective.setDisplayName(ChatColor.DARK_GRAY + "» " + ChatColor.DARK_RED + "Warvale" + ChatColor.GOLD + "FFA" + ChatColor.DARK_GRAY + " «" );
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         Team players = scoreboard.registerNewTeam("Players");
