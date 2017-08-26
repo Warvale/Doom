@@ -1,0 +1,18 @@
+name: WarvaleFFA
+main: net.warvale.ffa.WarvaleFFA
+version: 1.0.0
+description: A private FFA plugin made for DevotedPvP and customized for Warvale ONLY.
+
+commands:
+  globalmute:
+    aliases: [gm]
+  setspawn:
+    description: Sets the spawn of the arena
+  settype:
+    description: Sets the mode of the ffa server
+  maxplayers:
+    description: Sets the max players of the server
+  togglestats:
+    description: Enables/Disables stats for the ffa
+  stats:
+    description: View players stats
