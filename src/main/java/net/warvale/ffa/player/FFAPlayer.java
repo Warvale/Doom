@@ -23,6 +23,8 @@ public class FFAPlayer {
     private int totalKills = 0;
     private int totalDeaths = 0;
     private int highestKillStreak = 0;
+    private int embers = 0;
+
 
     public FFAPlayer(UUID uuid) {
         this.uuid = uuid;
@@ -68,6 +70,13 @@ public class FFAPlayer {
     public int getTotalKills() {
         return this.totalKills;
     }
+
+    public int getEmbers() { return embers; }
+
+    public void setEmbers(int embers) { this.embers = embers; }
+
+    public void addEmber() { ++this.embers; }
+
 
     public void setTotalKills(int totalKills) {
         this.totalKills = totalKills;
@@ -134,6 +143,7 @@ public class FFAPlayer {
                            FFAPlayer.this.setTotalKills(set.getInt("kills"));
                            FFAPlayer.this.setTotalDeaths(set.getInt("deaths"));
                            FFAPlayer.this.setHighestKillStreak(set.getInt("killstreak"));
+                           FFAPlayer.this.setEmbers(set.getInt("embers"));
 
                        }
                        set.close();
@@ -168,11 +178,12 @@ public class FFAPlayer {
                     connection = WarvaleFFA.getStorageBackend().getPoolManager().getConnection();
 
                     stmt = connection.prepareStatement("INSERT INTO `" + DatabaseUtils.getTable() + "` " +
-                            "(uuid, kills, deaths, killstreak) VALUES (?, ?, ?, ?)");
+                            "(uuid, kills, deaths, killstreak, embers) VALUES (?, ?, ?, ?, ?)");
                     stmt.setString(1, FFAPlayer.this.uuid.toString());
                     stmt.setInt(2, FFAPlayer.this.getTotalKills());
                     stmt.setInt(3, FFAPlayer.this.getTotalDeaths());
                     stmt.setInt(4, FFAPlayer.this.getHighestKillStreak());
+                    stmt.setInt(5, FFAPlayer.this.getEmbers());
                     stmt.execute();
                     stmt.close();
 
@@ -223,6 +234,12 @@ public class FFAPlayer {
 
                             stmt = connection.prepareStatement("UPDATE `" + DatabaseUtils.getTable() + "` SET killstreak = ? WHERE uuid = ?;");
                             stmt.setInt(1, FFAPlayer.this.getHighestKillStreak());
+                            stmt.setString(2, FFAPlayer.this.uuid.toString());
+                            stmt.executeUpdate();
+                            stmt.close();
+
+                            stmt = connection.prepareStatement("UPDATE `" + DatabaseUtils.getTable() + "` SET embers = ? WHERE uuid = ?;");
+                            stmt.setInt(1, FFAPlayer.this.getEmbers());
                             stmt.setString(2, FFAPlayer.this.uuid.toString());
                             stmt.executeUpdate();
                             stmt.close();

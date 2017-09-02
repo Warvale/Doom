@@ -37,6 +37,7 @@ public class DeathListener implements Listener {
 
         ffaPlayer.addDeath();
         ffaPlayer.addTotalDeath();
+        ffaPlayer.setEmbers(ffaPlayer.getEmbers()+20);
 
         //only reset kill streak if it is greater than 0
         if (ffaPlayer.getKillStreak() > 0) {
