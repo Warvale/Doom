@@ -105,6 +105,10 @@
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
+        <repository>
+            <id>comphenix-rep</id>
+            <url>http://repo.comphenix.net/content/groups/public</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -113,7 +117,6 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
-            <type>jar</type>
             <scope>provided</scope>
         </dependency>
         <!-- Bukkit API -->
@@ -121,7 +124,6 @@
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
             <version>1.8.8-R0.1-SNAPSHOT</version>
-            <type>jar</type>
             <scope>provided</scope>
         </dependency>
         <dependency>

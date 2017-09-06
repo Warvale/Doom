@@ -34,7 +34,7 @@ public class DeathListener implements Listener {
 
         //update player stats
         FFAPlayer ffaPlayer = PlayerManager.getInstance().getFFAPlayer(player.getUniqueId());
-
+            player.spigot().respawn(); // insta respawn
         ffaPlayer.addDeath();
         ffaPlayer.addTotalDeath();
         ffaPlayer.setEmbers(ffaPlayer.getEmbers()+20);
