@@ -37,7 +37,8 @@ public class DeathListener implements Listener {
             player.spigot().respawn(); // insta respawn
         ffaPlayer.addDeath();
         ffaPlayer.addTotalDeath();
-        ffaPlayer.setEmbers(ffaPlayer.getEmbers()+20);
+        FFAPlayer ffadead = PlayerManager.getInstance().getFFAPlayer(killer.getUniqueId());
+        ffadead.setEmbers(ffadead.getEmbers()+20);
 
         //only reset kill streak if it is greater than 0
         if (ffaPlayer.getKillStreak() > 0) {
