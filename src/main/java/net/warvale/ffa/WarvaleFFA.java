@@ -88,6 +88,7 @@ public class WarvaleFFA extends JavaPlugin {
         pm.registerEvents(new CommandListener(), this);
         pm.registerEvents(new WorldListener(this), this);
         pm.registerEvents(new LaunchpadListener(this), this);
+        pm.registerEvents(new DamageListener(this), this);
 
     }
 
