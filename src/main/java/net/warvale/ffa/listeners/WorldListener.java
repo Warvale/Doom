@@ -25,7 +25,7 @@ public class WorldListener implements Listener {
 
     @EventHandler (priority = EventPriority.HIGHEST)
     public void onBlockBreak(BlockBreakEvent event) {
-        event.setCancelled(true);
+        if (event.getPlayer().getGameMode().equals(GameMode.CREATIVE)) {}else event.setCancelled(true);
     }
 
     @EventHandler (priority = EventPriority.HIGHEST)
