@@ -23,7 +23,7 @@ public class LaunchpadListener implements Listener {
         Block curr = e.getTo().getBlock();
         Block below = curr.getRelative(BlockFace.DOWN);
         if (below.getType().equals(Material.WOOL) && curr.getType().equals(Material.IRON_PLATE)) {
-            e.getPlayer().setVelocity(new Vector(e.getPlayer().getVelocity().getX()+1.5D, 1.0D, e.getPlayer().getVelocity().getZ()));
+            e.getPlayer().setVelocity(new Vector(e.getPlayer().getVelocity().getX()+2.0D, 1.0D, e.getPlayer().getVelocity().getZ()));
         }
     }
 }
