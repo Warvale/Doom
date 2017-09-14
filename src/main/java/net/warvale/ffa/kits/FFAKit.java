@@ -34,7 +34,7 @@ public class FFAKit {
             player.getInventory().setArmorContents(this.armorItems);
             player.updateInventory();
         } catch (Exception ex) {
-            ex.printStackTrace();
+
         }
 
         //call the KitLoadEvent
