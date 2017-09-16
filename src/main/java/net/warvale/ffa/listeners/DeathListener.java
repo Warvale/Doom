@@ -40,8 +40,8 @@ public class DeathListener implements Listener {
         FFAPlayer ffadead = PlayerManager.getInstance().getFFAPlayer(killer.getUniqueId());
         ffadead.setEmbers(ffadead.getEmbers()+20);
 
-        //only reset kill streak if it is greater than 0
-        if (ffaPlayer.getKillStreak() > 0) {
+        //only reset kill streak if it is greater than 5
+        if (ffaPlayer.getKillStreak() > 5) {
             MessageManager.broadcast(ChatColor.AQUA + killer.getName() + ChatColor.GRAY + " has ended " + ChatColor.AQUA +
                     player.getName() + ChatColor.GRAY + "'s killstreak of " + ChatColor.RED + ffaPlayer.getKillStreak() + ChatColor.GRAY + "!");
 
