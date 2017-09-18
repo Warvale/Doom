@@ -98,6 +98,15 @@ public class StatsGUI extends GUI implements Listener {
         deaths.setItemMeta(dethsMeta);
         inv.setItem(2, deaths);
 
+        //Embers
+        ItemStack embers = new ItemStack(Material.EMERALD, 1);
+        ItemMeta embersMeta = embers.getItemMeta();
+
+        embersMeta.setDisplayName("§8» §7Embers:§a " + ffaPlayer.getEmbers() + " §8«");
+
+        embers.setItemMeta(embersMeta);
+        inv.setItem(3, embers);
+
     }
 
 }
