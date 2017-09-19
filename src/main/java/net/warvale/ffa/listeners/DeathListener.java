@@ -17,6 +17,8 @@ import net.warvale.ffa.message.MessageManager;
 import net.warvale.ffa.player.FFAPlayer;
 import net.warvale.ffa.player.PlayerManager;
 import net.warvale.ffa.utils.ItemStackUtils;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public class DeathListener implements Listener {
 
@@ -25,10 +27,11 @@ public class DeathListener implements Listener {
         Player player = event.getEntity().getPlayer();
         Player killer = event.getEntity().getKiller();
 
+
         if (player == null || killer == null) {
             return;
         }
-
+            killer.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 100, 1));
         //clear items of the player
         player.getInventory().clear();
 
