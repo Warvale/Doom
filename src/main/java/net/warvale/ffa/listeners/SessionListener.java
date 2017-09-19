@@ -81,7 +81,7 @@ public class SessionListener implements Listener {
     @EventHandler
     public void onPing(ServerListPingEvent event) {
 
-        event.setMotd(MessageManager.getPrefix(PrefixType.FFA) + "§7UHC FFA now in public beta");
+//        event.setMotd(MessageManager.getPrefix(PrefixType.FFA) + "§7UHC FFA now in public beta");
         event.setMaxPlayers(WarvaleFFA.get().getGame().getMaxPlayers());
     }
 

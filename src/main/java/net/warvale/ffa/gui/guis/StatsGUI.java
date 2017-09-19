@@ -107,6 +107,15 @@ public class StatsGUI extends GUI implements Listener {
         embers.setItemMeta(embersMeta);
         inv.setItem(3, embers);
 
+        //Embers
+        ItemStack xp = new ItemStack(Material.EXP_BOTTLE, 1);
+        ItemMeta xpMeta = xp.getItemMeta();
+
+        xpMeta.setDisplayName("§8» §7Level:§a " + ffaPlayer.getLevel() + " §8«");
+
+        xp.setItemMeta(xpMeta);
+        inv.setItem(4, xp);
+
     }
 
 }

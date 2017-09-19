@@ -51,7 +51,8 @@ public class DeathListener implements Listener {
 
             ffaPlayer.resetKillStreak();
         }
-
+        ffaPlayer.setXp(ffaPlayer.getXp()+(ffaPlayer.getKillStreak()*5));
+        player.setLevel(ffaPlayer.getLevel());
         //killer stats
         killer.getInventory().addItem(ItemStackUtils.createGoldenHead());
 
