@@ -41,9 +41,6 @@ public class SessionListener implements Listener {
 
         player.teleport(WarvaleFFA.get().getGame().getSpawn());
 
-        if (!WarvaleFFA.get().getGame().isFFAMode(FFAMode.NONE)) {
-            WarvaleFFA.get().getGame().getGameMode().getKit().loadKit(player);
-        }
 
     }
 

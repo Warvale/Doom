@@ -121,9 +121,6 @@ public class DeathListener implements Listener {
 
         Player player = event.getPlayer();
 
-        if (!WarvaleFFA.get().getGame().isFFAMode(FFAMode.NONE)) {
-            WarvaleFFA.get().getGame().getGameMode().getKit().loadKit(player);
-        }
 
         event.setRespawnLocation(WarvaleFFA.get().getGame().getSpawn());
     }
