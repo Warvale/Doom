@@ -5,8 +5,6 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import net.warvale.ffa.config.ConfigManager;
-import net.warvale.ffa.gamemodes.Gamemode;
-import net.warvale.ffa.gamemodes.UHCGamemode;
 import net.warvale.ffa.message.MessageManager;
 import net.warvale.ffa.message.PrefixType;
 import net.warvale.ffa.utils.DatabaseUtils;
@@ -14,7 +12,6 @@ import net.warvale.ffa.utils.DatabaseUtils;
 public class Game {
 
     private FFAMode ffaMode;
-    private Gamemode gameMode;
     private String worldName;
     private int maxPlayers;
     private boolean stats;
@@ -28,22 +25,14 @@ public class Game {
             setFFAMode(FFAMode.NONE);
         }
 
-        //initialize the gamemode
-        switch (ffaMode) {
-            case UHC:
-                gameMode = new UHCGamemode();
-                break;
-            default:
-                throw new RuntimeException("Unrecognized FFA TYPE in configuration file for FFA: " + ConfigManager.getConfig().getString("game.type"));
-        }
 
         this.worldName = ConfigManager.getConfig().getString("settings.world", "arena");
         this.maxPlayers = ConfigManager.getConfig().getInt("settings.maxPlayers", 100);
         this.stats = ConfigManager.getConfig().getBoolean("settings.stats", true);
 
-        if (isFFAMode(FFAMode.UHC)) {
+
             DatabaseUtils.setTable("uhcffa_stats");
-        }
+
     }
 
     public FFAMode getFFAMode() {
@@ -61,13 +50,7 @@ public class Game {
         return getFFAMode().equals(ffaMode);
     }
 
-    public Gamemode getGameMode() {
-        return this.gameMode;
-    }
 
-    public boolean isGamemode(Gamemode gameMode) {
-        return getGameMode().equals(gameMode);
-    }
 
     public String getWorldName() {
         return worldName;

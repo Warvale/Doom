@@ -7,12 +7,11 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import net.warvale.ffa.WarvaleFFA;
-import net.warvale.ffa.game.FFAMode;
-import net.warvale.ffa.kits.UHCKit;
 import net.warvale.ffa.message.MessageManager;
 import net.warvale.ffa.player.FFAPlayer;
 import net.warvale.ffa.player.PlayerManager;
@@ -129,5 +128,8 @@ public class DeathListener implements Listener {
     public void onItemDrop(PlayerDropItemEvent event) {
         event.setCancelled(true);
     }
+
+    @EventHandler
+    public void onHungerChange(FoodLevelChangeEvent e  ) {e.setFoodLevel(20);}
 
 }
