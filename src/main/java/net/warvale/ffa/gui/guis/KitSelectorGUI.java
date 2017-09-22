@@ -91,5 +91,12 @@ public class KitSelectorGUI extends GUI implements Listener {
         }
 
     }
+    public static void giveKitSelectorItem(Player p) {
+        ItemStack guiopener = new ItemStack(Material.ENCHANTED_BOOK);
+        ItemMeta meta = guiopener.getItemMeta();
+        meta.setDisplayName("§bKit Selector");
+        guiopener.setItemMeta(meta);
+        p.getInventory().setItem(40,guiopener);
+    }
 
 }

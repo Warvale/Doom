@@ -1,5 +1,7 @@
 package net.warvale.ffa.listeners;
 
+import net.warvale.ffa.gui.GUIManager;
+import net.warvale.ffa.gui.guis.KitSelectorGUI;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -122,6 +124,7 @@ public class DeathListener implements Listener {
 
 
         event.setRespawnLocation(WarvaleFFA.get().getGame().getSpawn());
+        KitSelectorGUI.giveKitSelectorItem(player);
     }
 
     @EventHandler

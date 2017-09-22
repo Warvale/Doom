@@ -1,6 +1,7 @@
 package net.warvale.ffa.listeners;
 
 
+import net.warvale.ffa.gui.guis.KitSelectorGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
@@ -18,6 +19,7 @@ import net.warvale.ffa.message.MessageManager;
 import net.warvale.ffa.message.PrefixType;
 import net.warvale.ffa.player.PlayerManager;
 import net.warvale.ffa.scoreboards.FFAScoreboard;
+import org.bukkit.potion.PotionEffect;
 
 public class SessionListener implements Listener {
 
@@ -40,7 +42,10 @@ public class SessionListener implements Listener {
         FFAScoreboard.getInstance().newScoreboard(player);
 
         player.teleport(WarvaleFFA.get().getGame().getSpawn());
-
+        KitSelectorGUI.giveKitSelectorItem(player);
+        player.setHealth(20);
+        for (PotionEffect effect : player.getActivePotionEffects())  // loop thru all active potion effects
+            player.removePotionEffect(effect.getType()); // remove potion effects
 
     }
 
