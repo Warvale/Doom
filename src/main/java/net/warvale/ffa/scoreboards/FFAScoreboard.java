@@ -134,11 +134,11 @@ public class FFAScoreboard {
             FFAPlayer ffaPlayer = PlayerManager.getInstance().getFFAPlayer(online.getUniqueId());
 
             Objective objective = getScoreboards().get(online.getUniqueId()).getObjective("game");
-            Team kills = getScoreboards().get(online.getUniqueId()).getTeam("Level");
-            if (objective != null && kills != null) {
+            Team level = getScoreboards().get(online.getUniqueId()).getTeam("Level");
+            if (objective != null && level != null) {
                 objective.getScore("    ").setScore(12);
 
-                kills.setSuffix(" §7" + String.valueOf(ffaPlayer.getLevel()));
+                level.setSuffix(" §7" + String.valueOf(ffaPlayer.getLevel()));
 
                 objective.getScore("§aLevel:").setScore(11);
 
@@ -155,12 +155,12 @@ public class FFAScoreboard {
             FFAPlayer ffaPlayer = PlayerManager.getInstance().getFFAPlayer(online.getUniqueId());
 
             Objective objective = getScoreboards().get(online.getUniqueId()).getObjective("game");
-            Team deaths = getScoreboards().get(online.getUniqueId()).getTeam("Embers");
-            if (objective != null && deaths != null) {
+            Team embers = getScoreboards().get(online.getUniqueId()).getTeam("Embers");
+            if (objective != null && embers != null) {
 
-                deaths.setSuffix(" §7" + String.valueOf(ffaPlayer.getEmbers()));
+                embers.setSuffix(" §7" + String.valueOf(ffaPlayer.getEmbers()));
 
-                objective.getScore("§aDeaths:").setScore(10);
+                objective.getScore("§aEmbers:").setScore(10);
 
             }
 
