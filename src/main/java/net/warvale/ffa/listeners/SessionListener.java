@@ -3,6 +3,7 @@ package net.warvale.ffa.listeners;
 
 import net.warvale.ffa.gui.GUIManager;
 import net.warvale.ffa.gui.guis.KitSelectorGUI;
+import net.warvale.ffa.player.FFAPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -40,7 +41,7 @@ public class SessionListener implements Listener {
         if (!PlayerManager.getInstance().doesFFAPlayerExsists(player.getUniqueId())) {
             PlayerManager.getInstance().createFFAPlayer(player.getUniqueId());
         }
-
+        FFAPlayer ffaPlayer = PlayerManager.getInstance().getFFAPlayer(player.getUniqueId());
         FFAScoreboard.getInstance().addScoreboard(player);
         FFAScoreboard.getInstance().newScoreboard(player);
 
@@ -50,6 +51,7 @@ public class SessionListener implements Listener {
         for (PotionEffect effect : player.getActivePotionEffects())  // loop thru all active potion effects
             player.removePotionEffect(effect.getType()); // remove potion effects
         player.setFoodLevel(20);
+        player.setLevel(ffaPlayer.getLevel());
 
     }
 

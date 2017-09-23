@@ -53,7 +53,9 @@ public class FFAPlayer {
     }
 
     public int getXp() {return this.xp;}
-    public void setXp(int xp) {this.xp = xp;}
+    public void setXp(int xp) {this.xp = xp;
+    getPlayer().setLevel(getLevel());
+    }
     public int getLevel() {return this.xp / 1000;}
     public void addTotalDeath() {
         ++this.totalDeaths;
