@@ -7,6 +7,7 @@ import net.warvale.ffa.player.FFAPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -92,7 +93,13 @@ public class SessionListener implements Listener {
 //        event.setMotd(MessageManager.getPrefix(PrefixType.FFA) + "§7UHC FFA now in public beta");
         event.setMaxPlayers(WarvaleFFA.get().getGame().getMaxPlayers());
     }
-
+    @EventHandler
+    public void onSoup(PlayerInteractEvent event) {
+        Player player = event.getPlayer();
+        if (!(event.getAction().equals(Action.RIGHT_CLICK_BLOCK) || event.getAction().equals(Action.RIGHT_CLICK_AIR))) return; // Stop doing anything if they arent right clicking.
+        if (!(event.getItem().getType().equals(Material.MUSHROOM_SOUP))) return;
+        if ((player.getHealth()+2.5) > 20) player.setHealth(20); else player.setHealth(player.getHealth()+2.5);
+    }
     @EventHandler
     public void kitSelectorInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
