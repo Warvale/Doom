@@ -56,7 +56,22 @@ public class FFAPlayer {
     public void setXp(int xp) {this.xp = xp;
     getPlayer().setLevel(getLevel());
     }
-    public int getLevel() {return this.xp / 1000;}
+    public int getLevel() {
+        if (getXp() <= 50) return 1;
+        if (getXp() <= 150) return 2;
+        if (getXp() <= 300) return 3;
+        if (getXp() <= 750) return 4;
+        if (getXp() <= 1500) return 5;
+        if (getXp() <= 4000) return 6;
+        if (getXp() <= 10000) return 7;
+        if (getXp() <= 25000) return 8;
+        if (getXp() <= 75000) return 9;
+        if (getXp() <= 75000) return 9;
+        if (getXp() <= 150000) return 10;
+        if (getXp() <= 250000) return 11;
+        if (getXp() <= 500000) return 12;
+        return 0;
+    }
     public void addTotalDeath() {
         ++this.totalDeaths;
     }
