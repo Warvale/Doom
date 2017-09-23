@@ -5,6 +5,7 @@ import net.warvale.ffa.gui.GUI;
 import net.warvale.ffa.gui.GUIManager;
 import net.warvale.ffa.kits.ExampleKit;
 import net.warvale.ffa.kits.Kit;
+import net.warvale.ffa.kits.SadifiedKit;
 import net.warvale.ffa.player.FFAPlayer;
 import net.warvale.ffa.player.PlayerManager;
 import org.bukkit.Bukkit;
@@ -42,6 +43,7 @@ public class KitSelectorGUI extends GUI implements Listener {
         //Register kits here.
 
         kits.put("Example", new ExampleKit());
+        kits.put("Sadified", new SadifiedKit());
     }
 
 
