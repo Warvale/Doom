@@ -13,7 +13,7 @@ public class ExampleKit implements Kit{
     private String name = "Example";
     public String getName(){return this.name;}
     public void giveKit(Player player){
-        player.sendMessage(ChatColor.AQUA + "You have equipped the" + ChatColor.YELLOW + " EXAMPLE " + ChatColor.AQUA + "kit!"); // some messages, why not?
+
         ItemStack helmet = new ItemStack(Material.DIAMOND_HELMET);
         helmet.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
         ItemStack[] armor = new ItemStack[4];

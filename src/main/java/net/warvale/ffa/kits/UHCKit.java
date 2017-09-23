@@ -8,7 +8,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class UHCKit implements Kit{
-    private String name = "UHCKit";
+    private String name = "UHC";
     public String getName(){return this.name;}
     public void giveKit(Player player){
         ItemStack[] armor = new ItemStack[4];

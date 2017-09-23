@@ -8,14 +8,14 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class MCSGKit implements Kit{
-    private String name = "MCSGKit";
+    private String name = "MCSG";
     public String getName(){return this.name;}
     public void giveKit(Player player){
         ItemStack[] armor = new ItemStack[4];
         armor[0] = new ItemStack(Material.GOLD_BOOTS);
         armor[1] = new ItemStack(Material.IRON_LEGGINGS);
         armor[2] = new ItemStack(Material.LEATHER_CHESTPLATE);
-        armor[3] = new ItemStack(Material.CHAIN_HELMET);
+        armor[3] = new ItemStack(Material.CHAINMAIL_HELMET);
         player.getInventory().setArmorContents(armor);
         ItemStack sword = new ItemStack(Material.IRON_SWORD);
         sword.addEnchantment(Enchantment.DAMAGE_ALL, 1);
