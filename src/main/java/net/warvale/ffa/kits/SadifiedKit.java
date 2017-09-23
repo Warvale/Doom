@@ -17,12 +17,13 @@ public class SadifiedKit implements Kit{
         ItemStack helmet = new ItemStack(Material.DIAMOND_HELMET);
         helmet.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 4);
         ItemStack[] armor = new ItemStack[4];
-        armor[1] = new ItemStack(Material.IRON_CHESTPLATE);
+        armor[2] = new ItemStack(Material.IRON_CHESTPLATE);
         player.getInventory().setArmorContents(armor);
         ItemStack enchbow = new ItemStack(Material.BOW);
         enchbow.addEnchantment(Enchantment.ARROW_INFINITE, 1);
         enchbow.addEnchantment(Enchantment.ARROW_DAMAGE, 2);
         player.getInventory().setItem(0, enchbow);
+        player.getInventory().setItem(1, new ItemStack(Material.ARROW));
 
     }
 }
