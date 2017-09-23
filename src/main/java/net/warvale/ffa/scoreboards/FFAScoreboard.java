@@ -43,12 +43,12 @@ public class FFAScoreboard {
         players.addEntry("§aPlayers:");
         players.setSuffix(" §7");
 
-        Team kills = scoreboard.registerNewTeam("Kills");
-        kills.addEntry("§aKills:");
+        Team kills = scoreboard.registerNewTeam("Level");
+        kills.addEntry("§aLevel:");
         kills.setSuffix(" §7");
 
-        Team deaths = scoreboard.registerNewTeam("Deaths");
-        deaths.addEntry("§aDeaths:");
+        Team deaths = scoreboard.registerNewTeam("Embers");
+        deaths.addEntry("§aEmbers:");
         deaths.setSuffix(" §7");
 
         Team killStreak = scoreboard.registerNewTeam("KillStreak");
@@ -97,8 +97,8 @@ public class FFAScoreboard {
 
         //update the scoreboard
         updatePlayers();
-        updateKills();
-        updateDeaths();
+        updateLevel();
+        updateEmbers();
         updateKillStreak();
         updateTotalKills();
         updateTotalDeaths();
@@ -127,20 +127,20 @@ public class FFAScoreboard {
 
     }
 
-    public void updateKills() {
+    public void updateLevel() {
 
         for (Player online : Bukkit.getServer().getOnlinePlayers()) {
 
             FFAPlayer ffaPlayer = PlayerManager.getInstance().getFFAPlayer(online.getUniqueId());
 
             Objective objective = getScoreboards().get(online.getUniqueId()).getObjective("game");
-            Team kills = getScoreboards().get(online.getUniqueId()).getTeam("Kills");
+            Team kills = getScoreboards().get(online.getUniqueId()).getTeam("Level");
             if (objective != null && kills != null) {
                 objective.getScore("    ").setScore(12);
 
-                kills.setSuffix(" §7" + String.valueOf(ffaPlayer.getKills()));
+                kills.setSuffix(" §7" + String.valueOf(ffaPlayer.getLevel()));
 
-                objective.getScore("§aKills:").setScore(11);
+                objective.getScore("§aLevel:").setScore(11);
 
             }
 
@@ -148,17 +148,17 @@ public class FFAScoreboard {
 
     }
 
-    public void updateDeaths() {
+    public void updateEmbers() {
 
         for (Player online : Bukkit.getServer().getOnlinePlayers()) {
 
             FFAPlayer ffaPlayer = PlayerManager.getInstance().getFFAPlayer(online.getUniqueId());
 
             Objective objective = getScoreboards().get(online.getUniqueId()).getObjective("game");
-            Team deaths = getScoreboards().get(online.getUniqueId()).getTeam("Deaths");
+            Team deaths = getScoreboards().get(online.getUniqueId()).getTeam("Embers");
             if (objective != null && deaths != null) {
 
-                deaths.setSuffix(" §7" + String.valueOf(ffaPlayer.getDeaths()));
+                deaths.setSuffix(" §7" + String.valueOf(ffaPlayer.getEmbers()));
 
                 objective.getScore("§aDeaths:").setScore(10);
 
