@@ -40,8 +40,6 @@ public class KitSelectorGUI extends GUI implements Listener {
     public void onSetup() {
         //Register kits here.
 
-        kits.put("Example", new ExampleKit());
-        kits.put("Sadified", new SadifiedKit());
         kits.put("UHC", new UHCKit());
         kits.put("MCSG", new MCSGKit());
     }
