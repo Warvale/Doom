@@ -60,7 +60,7 @@ public class KitSelectorGUI extends GUI implements Listener {
             return;
         }
         Player player = (Player) event.getWhoClicked();
-        if (kits.size() >= event.getSlot()) {
+        if (kits.size() > event.getSlot()) {
             event.getWhoClicked().closeInventory();
 
             Kit kit = kits.get(inv.getItem(event.getSlot()).getItemMeta().getDisplayName().substring(2));
