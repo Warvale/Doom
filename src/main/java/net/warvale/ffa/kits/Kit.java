@@ -4,8 +4,9 @@ import org.bukkit.entity.Player;
 
 public interface Kit {
 
-    String name = "";
+    String name = "Unnamed";
     void giveKit(Player player);
+    String getName();
 
 
 }

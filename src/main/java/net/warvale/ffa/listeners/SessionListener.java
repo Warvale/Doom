@@ -1,17 +1,17 @@
 package net.warvale.ffa.listeners;
 
 
+import net.warvale.ffa.gui.GUIManager;
 import net.warvale.ffa.gui.guis.KitSelectorGUI;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerKickEvent;
-import org.bukkit.event.player.PlayerLoginEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.player.*;
 import org.bukkit.event.server.ServerListPingEvent;
 import net.warvale.ffa.WarvaleFFA;
 import net.warvale.ffa.game.FFAMode;
@@ -22,7 +22,10 @@ import net.warvale.ffa.scoreboards.FFAScoreboard;
 import org.bukkit.potion.PotionEffect;
 
 public class SessionListener implements Listener {
-
+    WarvaleFFA plugin;
+    public SessionListener(WarvaleFFA plugin){
+        this.plugin = plugin;
+    }
     @EventHandler (priority = EventPriority.HIGH)
     public void onJoin(PlayerJoinEvent event) {
         event.setJoinMessage(null);
@@ -46,6 +49,7 @@ public class SessionListener implements Listener {
         player.setHealth(20);
         for (PotionEffect effect : player.getActivePotionEffects())  // loop thru all active potion effects
             player.removePotionEffect(effect.getType()); // remove potion effects
+        player.setFoodLevel(20);
 
     }
 
@@ -85,6 +89,17 @@ public class SessionListener implements Listener {
 
 //        event.setMotd(MessageManager.getPrefix(PrefixType.FFA) + "§7UHC FFA now in public beta");
         event.setMaxPlayers(WarvaleFFA.get().getGame().getMaxPlayers());
+    }
+
+    @EventHandler
+    public void kitSelectorInteract(PlayerInteractEvent event) {
+        Player player = event.getPlayer();
+        if (!(event.getAction().equals(Action.RIGHT_CLICK_BLOCK) || event.getAction().equals(Action.RIGHT_CLICK_AIR))) return; // Stop doing anything if they arent right clicking.
+        if (!(event.getItem().getItemMeta().getDisplayName().equals("§bKit Selector"))) return; // is this the right item?
+        // go ahead and open the gui
+        KitSelectorGUI inv = plugin.getGUI().getGUI(KitSelectorGUI.class);
+
+        player.openInventory(inv.get(player));
     }
 
 }

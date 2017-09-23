@@ -3,6 +3,7 @@ package net.warvale.ffa.gui;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.warvale.ffa.gui.guis.KitSelectorGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 
@@ -72,7 +73,7 @@ public class GUIManager {
      */
     public void registerGUIs() {
         addGUI(new StatsGUI());
-
+        addGUI(new KitSelectorGUI());
         plugin.getLogger().info("All inventories has been setup.");
     }
 

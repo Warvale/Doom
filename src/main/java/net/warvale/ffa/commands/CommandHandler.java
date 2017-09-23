@@ -134,6 +134,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
         cmds.add(new StatsCommand(gui));
 
 
+
         for (AbstractCommand cmd : cmds) {
             PluginCommand pCmd = plugin.getCommand(cmd.getName());
             

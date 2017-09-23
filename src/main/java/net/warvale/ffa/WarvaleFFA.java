@@ -1,5 +1,6 @@
 package net.warvale.ffa;
 
+import net.warvale.ffa.gui.guis.KitSelectorGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
@@ -83,7 +84,7 @@ public class WarvaleFFA extends JavaPlugin {
     private void registerListeners(PluginManager pm) {
 
         pm.registerEvents(ChatListener.getInstance(), this);
-        pm.registerEvents(new SessionListener(), this);
+        pm.registerEvents(new SessionListener(this), this);
         pm.registerEvents(new DeathListener(), this);
         pm.registerEvents(new CommandListener(), this);
         pm.registerEvents(new WorldListener(this), this);
