@@ -1,30 +1,21 @@
 package net.warvale.ffa.gui.guis;
 
-import com.comphenix.protocol.PacketType;
 import net.warvale.ffa.gui.GUI;
-import net.warvale.ffa.gui.GUIManager;
 import net.warvale.ffa.kits.*;
-import net.warvale.ffa.player.FFAPlayer;
-import net.warvale.ffa.player.PlayerManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 
 public class KitSelectorGUI extends GUI implements Listener {
 
@@ -42,6 +33,8 @@ public class KitSelectorGUI extends GUI implements Listener {
 
         kits.put("UHC", new UHCKit());
         kits.put("MCSG", new MCSGKit());
+        kits.put("Scout", new ScoutKit());
+        kits.put("Archer", new ArcherKit());
     }
 
 

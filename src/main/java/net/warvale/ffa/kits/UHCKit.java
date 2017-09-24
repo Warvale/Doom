@@ -18,7 +18,6 @@ public class UHCKit implements Kit{
         armor[3] = new ItemStack(Material.IRON_HELMET);
         player.getInventory().setArmorContents(armor);
         ItemStack sword = new ItemStack(Material.IRON_SWORD);
-        sword.addEnchantment(Enchantment.KNOCKBACK, 1);
         player.getInventory().setItem(0, sword);
         player.getInventory().setItem(1, new ItemStack(Material.BOW));
         player.getInventory().setItem(7, new ItemStack(Material.ARROW, 4));

@@ -4,25 +4,38 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.PotionType;
 
 public class ArcherKit implements Kit{
     private String name = "Archer";
     public String getName(){return this.name;}
     public void giveKit(Player player){
         ItemStack[] armor = new ItemStack[4];
-        armor[0] = new ItemStack(Material.CHAIN_BOOTS); // TODO: add projectile protection 3
-        armor[1] = new ItemStack(Material.CHAIN_LEGGINGS); // TODO: add protection 1, unbreaking 1
-        armor[2] = new ItemStack(Material.CHAIN_CHESTPLATE); // TODO: add protection 1
-        armor[3] = new ItemStack(Material.LEATHER_HELMET); // TODO: add unbreaking 1
+        armor[0] = new ItemStack(Material.CHAINMAIL_BOOTS);
+        armor[0].addEnchantment(Enchantment.PROTECTION_PROJECTILE, 3);
+        armor[1] = new ItemStack(Material.CHAINMAIL_LEGGINGS);
+        armor[1].addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
+        armor[1].addEnchantment(Enchantment.DURABILITY, 1);
+        armor[2] = new ItemStack(Material.CHAINMAIL_CHESTPLATE);
+        armor[2].addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
+        armor[3] = new ItemStack(Material.LEATHER_HELMET); //
+        armor[3].addEnchantment(Enchantment.DURABILITY, 1);
         player.getInventory().setArmorContents(armor);
-        player.getInventory().setItem(0, new ItemStack(Material.WOODEN_SWORD));
+        player.getInventory().setItem(0, new ItemStack(Material.WOOD_SWORD));
         ItemStack bow = new ItemStack(Material.BOW);
         bow.addEnchantment(Enchantment.ARROW_DAMAGE, 2);
         bow.addEnchantment(Enchantment.ARROW_INFINITE, 1);
         player.getInventory().setItem(1, bow);
-        // player.getInventory().setItem(2, new ItemStack(Material.SPEED_SPLASH_POT)); TODO: add splash swift  1 for 8 min
+        Potion splash = new Potion(PotionType.SPEED, 1);
+        splash.setSplash(true);
+
+        ItemStack potion = splash.toItemStack(1);
+        player.getInventory().setItem(1, potion);
+        player.getInventory().setItem(2, potion);
+        player.getInventory().setItem(3, potion);
         player.getInventory().setItem(8, new ItemStack(Material.ARROW));
     }
 }
