@@ -138,7 +138,7 @@ public class FFAScoreboard {
             if (objective != null && level != null) {
                 objective.getScore("    ").setScore(12);
 
-                level.setSuffix(" §7" + String.valueOf(ffaPlayer.getLevel()) + "§8/§7"+String.valueOf(ffaPlayer.getXPtoNextLevel()));
+                level.setSuffix(" §7" + String.valueOf(ffaPlayer.getLevel()));
 
                 objective.getScore("§bLevel:").setScore(11);
 

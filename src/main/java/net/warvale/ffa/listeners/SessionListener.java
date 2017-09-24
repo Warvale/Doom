@@ -104,7 +104,7 @@ public class SessionListener implements Listener {
     public void kitSelectorInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         if (!(event.getAction().equals(Action.RIGHT_CLICK_BLOCK) || event.getAction().equals(Action.RIGHT_CLICK_AIR))) return; // Stop doing anything if they arent right clicking.
-        if (!(event.getItem().getItemMeta().getDisplayName().equals("§bKit Selector"))) return; // is this the right item?
+        if (!(event.getItem().getItemMeta().getDisplayName().equals("§8Kit Selector"))) return; // is this the right item?
         // go ahead and open the gui
         KitSelectorGUI inv = plugin.getGUI().getGUI(KitSelectorGUI.class);
 

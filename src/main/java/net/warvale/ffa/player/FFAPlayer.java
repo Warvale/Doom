@@ -64,7 +64,7 @@ public class FFAPlayer {
         return 12;
     }
     public int getXPtoNextLevel() {
-        return KitSelectorGUI.getLevelupxp()[this.getLevel()]-(getXp() - getUselessXP());
+        return KitSelectorGUI.getLevelupxp()[this.getLevel()-2]-(getXp() - getUselessXP());
     }
     public int getUselessXP() {
         int useless = 0;

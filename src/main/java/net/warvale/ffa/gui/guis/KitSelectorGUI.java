@@ -27,7 +27,7 @@ public class KitSelectorGUI extends GUI implements Listener {
 
     private final Map<String, Inventory> inventories = new HashMap<String, Inventory>();
     private Map<String, Kit> kits = new HashMap();
-    private static int[] levelupxp = new int[11];
+    private static int[] levelupxp = new int[12];
 
     public static int[] getLevelupxp() {
         return levelupxp;
