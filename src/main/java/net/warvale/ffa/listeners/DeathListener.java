@@ -32,7 +32,7 @@ public class DeathListener implements Listener {
         if (player == null || killer == null) {
             return;
         }
-            killer.addPotionEffect(new PotionEffect(PotionEffectType.REGENERATION, 10, 1));
+        if ((killer.getHealth()+3.5) > 19 ) killer.setHealth(20); else killer.setHealth(killer.getHealth()+3.5);
         //clear items of the player
         player.getInventory().clear();
 

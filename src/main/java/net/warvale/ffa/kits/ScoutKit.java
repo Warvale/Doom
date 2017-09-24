@@ -18,6 +18,9 @@ public class ScoutKit implements Kit{
         armor[1] = new ItemStack(Material.CHAINMAIL_LEGGINGS);
         armor[2] = new ItemStack(Material.CHAINMAIL_CHESTPLATE);
         armor[3] = new ItemStack(Material.CHAINMAIL_HELMET);
+        for (ItemStack stack : armor) {
+            stack.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
+        }
         player.getInventory().setArmorContents(armor);
         ItemStack sword = new ItemStack(Material.STONE_SWORD);
         sword.addEnchantment(Enchantment.DAMAGE_ALL, 1);

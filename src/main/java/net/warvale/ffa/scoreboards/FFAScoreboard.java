@@ -36,35 +36,35 @@ public class FFAScoreboard {
         Scoreboard scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
         Objective objective = scoreboard.registerNewObjective("game", "dummy");
 
-        objective.setDisplayName(ChatColor.DARK_GRAY + "» " + ChatColor.GOLD + "Doom" + ChatColor.DARK_GRAY + " «" );
+        objective.setDisplayName(ChatColor.DARK_GRAY + "» " + ChatColor.RED + ChatColor.BOLD + "Doom" + ChatColor.DARK_GRAY + " «" );
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
         Team players = scoreboard.registerNewTeam("Players");
-        players.addEntry("§aPlayers:");
+        players.addEntry("§bPlayers:");
         players.setSuffix(" §7");
 
         Team kills = scoreboard.registerNewTeam("Level");
-        kills.addEntry("§aLevel:");
+        kills.addEntry("§bLevel:");
         kills.setSuffix(" §7");
 
         Team deaths = scoreboard.registerNewTeam("Embers");
-        deaths.addEntry("§aEmbers:");
+        deaths.addEntry("§bEmbers:");
         deaths.setSuffix(" §7");
 
         Team killStreak = scoreboard.registerNewTeam("KillStreak");
-        killStreak.addEntry("§aKill Streak:");
+        killStreak.addEntry("§bKill Streak:");
         killStreak.setSuffix(" §7");
 
         Team totalKills = scoreboard.registerNewTeam("TotalKills");
-        totalKills.addEntry("§aTotal Kills:");
+        totalKills.addEntry("§bTotal Kills:");
         totalKills.setSuffix(" §7");
 
         Team totalDeaths = scoreboard.registerNewTeam("TotalDeaths");
-        totalDeaths.addEntry("§aTotal Deaths:");
+        totalDeaths.addEntry("§bTotal Deaths:");
         totalDeaths.setSuffix(" §7");
 
         Team highestKS = scoreboard.registerNewTeam("HighestKS");
-        highestKS.addEntry("§aKill St");
+        highestKS.addEntry("§bKill St");
         highestKS.setSuffix("reak: §7");
 
 
@@ -119,7 +119,7 @@ public class FFAScoreboard {
 
                 players.setSuffix(" §7" + String.valueOf(Bukkit.getServer().getOnlinePlayers().size()));
 
-                objective.getScore("§aPlayers:").setScore(13);
+                objective.getScore("§bPlayers:").setScore(13);
 
             }
 
@@ -140,7 +140,7 @@ public class FFAScoreboard {
 
                 level.setSuffix(" §7" + String.valueOf(ffaPlayer.getLevel()));
 
-                objective.getScore("§aLevel:").setScore(11);
+                objective.getScore("§bLevel:").setScore(11);
 
             }
 
@@ -160,7 +160,7 @@ public class FFAScoreboard {
 
                 embers.setSuffix(" §7" + String.valueOf(ffaPlayer.getEmbers()));
 
-                objective.getScore("§aEmbers:").setScore(10);
+                objective.getScore("§bEmbers:").setScore(10);
 
             }
 
@@ -180,7 +180,7 @@ public class FFAScoreboard {
 
                 killStreak.setSuffix(" §7" + String.valueOf(ffaPlayer.getKillStreak()));
 
-                objective.getScore("§aKill Streak:").setScore(9);
+                objective.getScore("§bKill Streak:").setScore(9);
 
             }
 
@@ -202,7 +202,7 @@ public class FFAScoreboard {
 
                 totalKills.setSuffix(" §7" + String.valueOf(ffaPlayer.getTotalKills()));
 
-                objective.getScore("§aTotal Kills:").setScore(7);
+                objective.getScore("§bTotal Kills:").setScore(7);
 
             }
 
@@ -222,7 +222,7 @@ public class FFAScoreboard {
 
                 totalDeaths.setSuffix(" §7" + String.valueOf(ffaPlayer.getTotalDeaths()));
 
-                objective.getScore("§aTotal Deaths:").setScore(6);
+                objective.getScore("§bTotal Deaths:").setScore(6);
 
             }
 
@@ -240,11 +240,11 @@ public class FFAScoreboard {
             Team highestKS = getScoreboards().get(online.getUniqueId()).getTeam("HighestKS");
             if (objective != null && highestKS != null) {
                 objective.getScore("  ").setScore(5);
-                objective.getScore("§aHighest").setScore(4);
+                objective.getScore("§bHighest").setScore(4);
 
                 highestKS.setSuffix("reak: §7" + String.valueOf(ffaPlayer.getHighestKillStreak()));
 
-                objective.getScore("§aKill St").setScore(3);
+                objective.getScore("§bKill St").setScore(3);
 
             }
 
@@ -261,7 +261,7 @@ public class FFAScoreboard {
             if (objective != null) {
                 objective.getScore(" ").setScore(2);
 
-                objective.getScore("§awarvale.net").setScore(1);
+                objective.getScore("§bwarvale.net").setScore(1);
 
             }
 
