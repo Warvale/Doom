@@ -2,6 +2,7 @@ package net.warvale.ffa.listeners;
 
 import net.warvale.ffa.gui.GUIManager;
 import net.warvale.ffa.gui.guis.KitSelectorGUI;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
@@ -33,6 +34,7 @@ public class DeathListener implements Listener {
             return;
         }
         if ((killer.getHealth()+3.5) > 19 ) killer.setHealth(20); else killer.setHealth(killer.getHealth()+3.5);
+
         //clear items of the player
         player.getInventory().clear();
 
@@ -43,6 +45,8 @@ public class DeathListener implements Listener {
         ffaPlayer.addTotalDeath();
         FFAPlayer ffadead = PlayerManager.getInstance().getFFAPlayer(killer.getUniqueId());
         ffadead.setEmbers(ffadead.getEmbers()+20);
+        player.sendMessage(ChatColor.GOLD + "+20 Embers");
+
 
         //only reset kill streak if it is greater than 5
         if (ffaPlayer.getKillStreak() > 5) {
@@ -55,8 +59,13 @@ public class DeathListener implements Listener {
 
             ffaPlayer.resetKillStreak();
         }
+        int levelbefore = ffaPlayer.getXp();
         ffaPlayer.setXp(ffaPlayer.getXp()+(ffaPlayer.getKillStreak()*5));
+        killer.sendMessage(ChatColor.AQUA + "+"+ffaPlayer.getKillStreak()*5+" XP");
         player.setLevel(ffaPlayer.getLevel());
+        if (ffaPlayer.getLevel() != levelbefore) {
+            Bukkit.getServer().broadcastMessage(ChatColor.AQUA + ffaPlayer.getName()+" has leveled up to Level "+ChatColor.GREEN+ffaPlayer.getLevel()+ChatColor.AQUA+"!");
+        }
 
         //update killer stats
         FFAPlayer ffaPlayerKiller = PlayerManager.getInstance().getFFAPlayer(killer.getUniqueId());

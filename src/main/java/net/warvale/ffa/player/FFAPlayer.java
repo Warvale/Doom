@@ -1,5 +1,6 @@
 package net.warvale.ffa.player;
 
+import net.warvale.ffa.gui.guis.KitSelectorGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -57,20 +58,20 @@ public class FFAPlayer {
     getPlayer().setLevel(getLevel());
     }
     public int getLevel() {
-        if (getXp() <= 50) return 1;
-        if (getXp() <= 150) return 2;
-        if (getXp() <= 300) return 3;
-        if (getXp() <= 750) return 4;
-        if (getXp() <= 1500) return 5;
-        if (getXp() <= 4000) return 6;
-        if (getXp() <= 10000) return 7;
-        if (getXp() <= 25000) return 8;
-        if (getXp() <= 75000) return 9;
-        if (getXp() <= 75000) return 9;
-        if (getXp() <= 150000) return 10;
-        if (getXp() <= 250000) return 11;
-        if (getXp() <= 500000) return 12;
-        return 0;
+        for (int i = KitSelectorGUI.getLevelupxp().length; i < 1; i--) {
+                if (getXp() >= KitSelectorGUI.getLevelupxp()[i]) return i + 1;
+        }
+        return 12;
+    }
+    public int getXPtoNextLevel() {
+        return KitSelectorGUI.getLevelupxp()[this.getLevel()]-(getXp() - getUselessXP());
+    }
+    public int getUselessXP() {
+        int useless = 0;
+        for (int i = getLevel() - 1; i < 1; i--) {
+            useless+=KitSelectorGUI.getLevelupxp()[this.getLevel()];
+        }
+        return useless;
     }
     public void addTotalDeath() {
         ++this.totalDeaths;
