@@ -8,7 +8,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class ScoutKit implements Kit{
-    private String name = "ScoutKit";
+    private String name = "Scout";
     public String getName(){return this.name;}
     public void giveKit(Player player){
         ItemStack[] armor = new ItemStack[4];
