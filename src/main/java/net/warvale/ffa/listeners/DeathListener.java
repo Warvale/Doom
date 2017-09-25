@@ -43,9 +43,9 @@ public class DeathListener implements Listener {
             player.spigot().respawn(); // insta respawn
         ffaPlayer.addDeath();
         ffaPlayer.addTotalDeath();
-        FFAPlayer ffadead = PlayerManager.getInstance().getFFAPlayer(killer.getUniqueId());
-        ffadead.setEmbers(ffadead.getEmbers()+20);
-        player.sendMessage(ChatColor.GOLD + "+20 Embers");
+        FFAPlayer ffakiller = PlayerManager.getInstance().getFFAPlayer(killer.getUniqueId());
+        ffakiller.setEmbers(ffakiller.getEmbers()+20);
+        killer.sendMessage(ChatColor.GOLD + "+20 Embers");
 
 
         //only reset kill streak if it is greater than 5
@@ -68,14 +68,14 @@ public class DeathListener implements Listener {
         }
 
         //update killer stats
-        FFAPlayer ffaPlayerKiller = PlayerManager.getInstance().getFFAPlayer(killer.getUniqueId());
 
-        ffaPlayerKiller.addKill();
-        ffaPlayerKiller.addKillStreak();
-        ffaPlayerKiller.addTotalKill();
 
-        if (ffaPlayerKiller.getKillStreak() > ffaPlayerKiller.getHighestKillStreak()) {
-            ffaPlayerKiller.setHighestKillStreak(ffaPlayerKiller.getKillStreak());
+        ffakiller.addKill();
+        ffakiller.addKillStreak();
+        ffakiller.addTotalKill();
+
+        if (ffakiller.getKillStreak() > ffakiller.getHighestKillStreak()) {
+            ffakiller.setHighestKillStreak(ffakiller.getKillStreak());
         }
 
         if (player.getLastDamageCause() != null) {

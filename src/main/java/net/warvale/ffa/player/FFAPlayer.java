@@ -58,10 +58,11 @@ public class FFAPlayer {
     getPlayer().setLevel(getLevel());
     }
     public int getLevel() {
+        int returning = 12;
         for (int i = KitSelectorGUI.getLevelupxp().length; i < 1; i--) {
-                if (getXp() >= KitSelectorGUI.getLevelupxp()[i]) return i + 1;
+                if (getXp() >= KitSelectorGUI.getLevelupxp()[i]) returning= i + 1;
         }
-        return 12;
+        return returning;
     }
     public int getXPtoNextLevel() {
         return KitSelectorGUI.getLevelupxp()[this.getLevel()-2]-(getXp() - getUselessXP());
