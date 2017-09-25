@@ -21,6 +21,7 @@ import net.warvale.ffa.message.MessageManager;
 import net.warvale.ffa.message.PrefixType;
 import net.warvale.ffa.player.PlayerManager;
 import net.warvale.ffa.scoreboards.FFAScoreboard;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 
 public class SessionListener implements Listener {
@@ -99,12 +100,13 @@ public class SessionListener implements Listener {
         if (!(event.getAction().equals(Action.RIGHT_CLICK_BLOCK) || event.getAction().equals(Action.RIGHT_CLICK_AIR))) return; // Stop doing anything if they arent right clicking.
         if (!(event.getItem().getType().equals(Material.MUSHROOM_SOUP))) return;
         if ((player.getHealth()+2.5) > 20) player.setHealth(20); else player.setHealth(player.getHealth()+2.5);
+        player.getInventory().remove(new ItemStack(Material.MUSHROOM_SOUP,1));
     }
     @EventHandler
     public void kitSelectorInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         if (!(event.getAction().equals(Action.RIGHT_CLICK_BLOCK) || event.getAction().equals(Action.RIGHT_CLICK_AIR))) return; // Stop doing anything if they arent right clicking.
-        if (!(event.getItem().getItemMeta().getDisplayName().equals("§8Kit Selector"))) return; // is this the right item?
+        if (!(event.getItem().getItemMeta().getDisplayName().equals("§bKit Selector"))) return; // is this the right item?
         // go ahead and open the gui
         KitSelectorGUI inv = plugin.getGUI().getGUI(KitSelectorGUI.class);
 
