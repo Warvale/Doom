@@ -24,9 +24,9 @@ public class PotKit implements Kit{
             stack.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
         }
         player.getInventory().setArmorContents(armor);
-        player.getInventory().setItem(0, new ItemStack(Material.WOOD_SWORD);
+        player.getInventory().setItem(0, new ItemStack(Material.WOOD_SWORD));
 
-        Potion splash = new Potion(PotionType.HEAL, 1);
+        Potion splash = new Potion(PotionType.INSTANT_HEAL, 1);
         splash.setSplash(true);
         ItemStack potion = splash.toItemStack(1);
         player.getInventory().setItem(1, potion);
@@ -41,6 +41,6 @@ public class PotKit implements Kit{
         Potion splashy = new Potion(PotionType.SPEED, 1);
         splashy.setSplash(true);
         ItemStack potiony = splashy.toItemStack(1);
-        player.getInventory().setItem(5, potiony));
+        player.getInventory().setItem(5, potiony);
     }
 }
