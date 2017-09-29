@@ -148,7 +148,9 @@ public class KitSelectorGUI extends GUI implements Listener {
             ItemMeta kitMeta = kit.getItemMeta();
 
             kitMeta.setDisplayName("§a"+entry.getValue().getName());
-
+            List<String> lores = kitMeta.getLore();
+            lores.add("§cCost: §a"+String.valueOf(entry.getValue().getCost()));
+            kitMeta.setLore(lores);
             kit.setItemMeta(kitMeta);
             inv.setItem(counter, kit);
             counter++;
