@@ -8,6 +8,8 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 public class MCSGKit implements Kit{
+    private int cost = 25000;
+    public int getCost(){return this.cost;}
     private String name = "MCSG";
     public String getName(){return this.name;}
     public void giveKit(Player player){

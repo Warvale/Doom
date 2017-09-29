@@ -10,6 +10,8 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 
 public class ArcherKit implements Kit{
+    private int cost = 500;
+    public int getCost(){return this.cost;}
     private String name = "Archer";
     public String getName(){return this.name;}
     public void giveKit(Player player){

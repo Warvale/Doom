@@ -2,15 +2,21 @@ package net.warvale.ffa.gui.guis;
 
 import net.warvale.ffa.gui.GUI;
 import net.warvale.ffa.kits.*;
+import net.warvale.ffa.player.FFAPlayer;
+import net.warvale.ffa.player.PlayerManager;
+import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,15 +75,42 @@ public class KitSelectorGUI extends GUI implements Listener {
             return;
         }
         Player player = (Player) event.getWhoClicked();
-        if (kits.size() > event.getSlot()) {
+        FFAPlayer ffaPlayer = PlayerManager.getInstance().getFFAPlayer(player.getUniqueId());
+        if (kits.size() > event.getSlot() && event.getClick().equals(ClickType.LEFT)) {
             event.getWhoClicked().closeInventory();
 
             Kit kit = kits.get(inv.getItem(event.getSlot()).getItemMeta().getDisplayName().substring(2));
+            if (kit.getName() != "UHC" && !ffaPlayer.hasKit(kit.getName())) {
+                // UHC kit is free.
+                player.sendMessage(ChatColor.RED + "You don't have that kit! (Right-click to purchase it.)");
+                return;
+            }
             player.getInventory().clear();
             kit.giveKit(player);
 
         }
+        if (kits.size() > event.getSlot() && event.getClick().equals(ClickType.RIGHT)) {
+            event.getWhoClicked().closeInventory();
 
+            Kit kit = kits.get(inv.getItem(event.getSlot()).getItemMeta().getDisplayName().substring(2));
+            if (kit.getName().toUpperCase() == "UHC") {
+                player.sendMessage(ChatColor.RED + "That kit is free.");
+                return;
+            }
+            if (ffaPlayer.hasKit(kit.getName())) {
+                player.sendMessage(ChatColor.RED+"You already have that Kit!");
+                return;
+            } else if (!ffaPlayer.hasKit(kit.getName())) {
+                if (ffaPlayer.getEmbers() <= kit.getCost()) {
+                    player.sendMessage(ChatColor.RED+"You do not have enough "+ChatColor.GREEN+"Embers "+ChatColor.RED+" to buy this kit! "+ChatColor.GRAY+"(You need "+ String.valueOf(kit.getCost()-ffaPlayer.getEmbers())+" more Embers to buy this kit!");
+                return;
+                }
+                // purchasing the kit here.
+                ffaPlayer.addPurcashedKit(kit.getName());
+                player.sendMessage(ChatColor.AQUA+"You have purchased the "+kit.getName().toUpperCase()+" kit!");
+            }
+
+        }
 
         event.setCancelled(true);
     }

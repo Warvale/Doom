@@ -1,5 +1,6 @@
 package net.warvale.ffa.player;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import net.warvale.ffa.gui.guis.KitSelectorGUI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -26,6 +27,7 @@ public class FFAPlayer {
     private int highestKillStreak = 0;
     private int embers = 0;
     private int xp = 0;
+    private String purchasedKits = "";
 
 
     public FFAPlayer(UUID uuid) {
@@ -38,7 +40,19 @@ public class FFAPlayer {
     public UUID getUUID() {
         return this.uuid;
     }
-
+    public void addPurcashedKit(String kitName){
+        if (hasKit(kitName)) return;
+        this.setPurchasedKits(getPurchasedKits()+" "+kitName.toUpperCase());
+    }
+    public Boolean hasKit(String kitName) {
+        Boolean res = false;
+        for (String s : this.getPurchasedKits().split(" +")) {
+            if (s.toUpperCase().equalsIgnoreCase(kitName.toUpperCase())) res = true;
+        }
+        return res;
+    }
+    public String getPurchasedKits() {return this.purchasedKits;}
+    public void setPurchasedKits(String newValue) {this.purchasedKits = newValue;}
     public Player getPlayer() {
         return Bukkit.getPlayer(uuid);
     }
@@ -168,6 +182,7 @@ public class FFAPlayer {
                            FFAPlayer.this.setHighestKillStreak(set.getInt("killstreak"));
                            FFAPlayer.this.setEmbers(set.getInt("embers"));
                            FFAPlayer.this.setXp(set.getInt("xp"));
+                           FFAPlayer.this.setPurchasedKits(set.getString("purchasedKits"));
 
                        }
                        set.close();
@@ -202,13 +217,14 @@ public class FFAPlayer {
                     connection = WarvaleFFA.getStorageBackend().getPoolManager().getConnection();
 
                     stmt = connection.prepareStatement("INSERT INTO `" + DatabaseUtils.getTable() + "` " +
-                            "(uuid, kills, deaths, killstreak, embers, xp) VALUES (?, ?, ?, ?, ?)");
+                            "(uuid, kills, deaths, killstreak, embers, xp, purchasedKits) VALUES (?, ?, ?, ?, ?)");
                     stmt.setString(1, FFAPlayer.this.uuid.toString());
                     stmt.setInt(2, FFAPlayer.this.getTotalKills());
                     stmt.setInt(3, FFAPlayer.this.getTotalDeaths());
                     stmt.setInt(4, FFAPlayer.this.getHighestKillStreak());
                     stmt.setInt(5, FFAPlayer.this.getEmbers());
                     stmt.setInt(6, FFAPlayer.this.getXp());
+                    stmt.setString(7, FFAPlayer.this.getPurchasedKits());
                     stmt.execute();
                     stmt.close();
 
@@ -275,6 +291,11 @@ public class FFAPlayer {
                             stmt.executeUpdate();
                             stmt.close();
 
+                            stmt = connection.prepareStatement("UPDATE `" + DatabaseUtils.getTable() + "` SET purchasedKits = ? WHERE uuid = ?;");
+                            stmt.setString(1, FFAPlayer.this.getPurchasedKits());
+                            stmt.setString(2, FFAPlayer.this.uuid.toString());
+                            stmt.executeUpdate();
+                            stmt.close();
                         }
 
                     } catch (SQLException ex) {
