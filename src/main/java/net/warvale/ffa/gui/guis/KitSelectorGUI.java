@@ -102,7 +102,7 @@ public class KitSelectorGUI extends GUI implements Listener {
                 return;
             } else if (!ffaPlayer.hasKit(kit.getName())) {
                 if (ffaPlayer.getEmbers() <= kit.getCost()) {
-                    player.sendMessage(ChatColor.RED+"You do not have enough "+ChatColor.GREEN+"Embers "+ChatColor.RED+" to buy this kit! "+ChatColor.GRAY+"(You need "+ String.valueOf(kit.getCost()-ffaPlayer.getEmbers())+" more Embers to buy this kit!");
+                    player.sendMessage(ChatColor.RED+"You do not have enough "+ChatColor.GREEN+"Embers"+ChatColor.RED+" to buy this kit! "+ChatColor.GRAY+"(You need "+ String.valueOf(kit.getCost()-ffaPlayer.getEmbers())+" more Embers to buy this kit!");
                 return;
                 }
                 // purchasing the kit here.
@@ -148,8 +148,8 @@ public class KitSelectorGUI extends GUI implements Listener {
             ItemMeta kitMeta = kit.getItemMeta();
 
             kitMeta.setDisplayName("§a"+entry.getValue().getName());
-            List<String> lores = kitMeta.getLore();
-            lores.add("§cCost: §a"+String.valueOf(entry.getValue().getCost()));
+            List<String> lores = new ArrayList<>();
+            lores.add("§cCost: §a"+String.valueOf( entry.getValue().getCost() ));
             kitMeta.setLore(lores);
             kit.setItemMeta(kitMeta);
             inv.setItem(counter, kit);

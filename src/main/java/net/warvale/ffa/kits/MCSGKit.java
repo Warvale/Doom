@@ -11,6 +11,8 @@ public class MCSGKit implements Kit{
     private int cost = 25000;
     public int getCost(){return this.cost;}
     private String name = "MCSG";
+    private Material icon = Material.FISHING_ROD;
+    public Material getIcon() { return icon; }
     public String getName(){return this.name;}
     public void giveKit(Player player){
         ItemStack[] armor = new ItemStack[4];

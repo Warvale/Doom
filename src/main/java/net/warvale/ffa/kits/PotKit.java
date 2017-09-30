@@ -13,6 +13,8 @@ public class PotKit implements Kit{
     private int cost = 5000;
     public int getCost(){return this.cost;}
     private String name = "Pot";
+    private Material icon = Material.POTION;
+    public Material getIcon() { return icon; }
     public String getName(){return this.name;}
     public void giveKit(Player player){
         ItemStack[] armor = new ItemStack[4];

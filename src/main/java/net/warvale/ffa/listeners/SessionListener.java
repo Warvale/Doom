@@ -8,11 +8,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
+import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.event.server.ServerListPingEvent;
 import net.warvale.ffa.WarvaleFFA;
@@ -29,6 +32,22 @@ public class SessionListener implements Listener {
     public SessionListener(WarvaleFFA plugin){
         this.plugin = plugin;
     }
+@EventHandler (priority = EventPriority.HIGH)
+    public void onItemBreak(PlayerItemBreakEvent event) {
+        // This respawn's items that broke.
+        ItemStack meme = event.getBrokenItem().clone();
+        meme.setDurability(meme.getType().getMaxDurability());
+        event.getPlayer().getInventory().addItem(meme);
+    }
+
+    public void onHit(EntityDamageByEntityEvent event) {
+        if (!(event.getEntity() instanceof Player)) return;
+        Player p = (Player) event.getEntity();
+        p.setVelocity(p.getVelocity().setY(p.getVelocity().getY()*0.1));
+        p.setVelocity(p.getVelocity().setX(p.getVelocity().getX()*0.3));
+        p.setVelocity(p.getVelocity().setZ(p.getVelocity().getZ()*0.3));
+    }
+
     @EventHandler (priority = EventPriority.HIGH)
     public void onJoin(PlayerJoinEvent event) {
         event.setJoinMessage(null);
@@ -38,6 +57,7 @@ public class SessionListener implements Listener {
         //make sure player is in survival and clear inventory
         player.setGameMode(GameMode.SURVIVAL);
         player.getInventory().clear();
+        player.getInventory().setArmorContents(new ItemStack[4]);
 
         //make sure the player exists
         if (!PlayerManager.getInstance().doesFFAPlayerExsists(player.getUniqueId())) {

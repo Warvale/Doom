@@ -19,6 +19,7 @@ import net.warvale.ffa.message.MessageManager;
 import net.warvale.ffa.player.FFAPlayer;
 import net.warvale.ffa.player.PlayerManager;
 import net.warvale.ffa.utils.ItemStackUtils;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -33,7 +34,8 @@ public class DeathListener implements Listener {
         if (player == null || killer == null) {
             return;
         }
-        if ((killer.getHealth()+3.5) > 19 ) killer.setHealth(20); else killer.setHealth(killer.getHealth()+3.5);
+        PotionEffect regenlol = new PotionEffect(PotionEffectType.REGENERATION,5,2);
+        killer.addPotionEffect(regenlol);
 
         //clear items of the player
         player.getInventory().clear();
@@ -41,6 +43,7 @@ public class DeathListener implements Listener {
         //update player stats
         FFAPlayer ffaPlayer = PlayerManager.getInstance().getFFAPlayer(player.getUniqueId());
             player.spigot().respawn(); // insta respawn
+        player.getInventory().setArmorContents(new ItemStack[4]);
         ffaPlayer.addDeath();
         ffaPlayer.addTotalDeath();
         FFAPlayer ffakiller = PlayerManager.getInstance().getFFAPlayer(killer.getUniqueId());
@@ -59,13 +62,17 @@ public class DeathListener implements Listener {
 
             ffaPlayer.resetKillStreak();
         }
-        int levelbefore = ffaPlayer.getXp();
-        ffaPlayer.setXp(ffaPlayer.getXp()+(ffaPlayer.getKillStreak()*5));
-        killer.sendMessage(ChatColor.AQUA + "+"+ffaPlayer.getKillStreak()*5+" XP");
-        player.setLevel(ffaPlayer.getLevel());
-        if (ffaPlayer.getLevel() != levelbefore) {
-            Bukkit.getServer().broadcastMessage(ChatColor.AQUA + ffaPlayer.getName()+" has leveled up to Level "+ChatColor.GREEN+ffaPlayer.getLevel()+ChatColor.AQUA+"!");
+
+        // leveling / xp system
+        int levelbeforechanges = ffakiller.getLevel();
+        int amountadding = (ffakiller.getKillStreak()+1) * 5;
+        ffakiller.setXp(ffakiller.getXp()+amountadding);
+        killer.sendMessage(ChatColor.AQUA+"+"+amountadding+" XP");
+        killer.setLevel(ffakiller.getLevel()); // Update MC level.
+        if (levelbeforechanges != ffakiller.getLevel()) {
+            Bukkit.getServer().broadcastMessage(ChatColor.GREEN + killer.getName()+ChatColor.AQUA+" just leveled up to level "+String.valueOf(ffakiller.getLevel())+" by killing "+ ChatColor.GREEN+player.getName()+ChatColor.AQUA+"!");
         }
+
 
         //update killer stats
 

@@ -11,6 +11,8 @@ public class UHCKit implements Kit{
     private int cost = 0;
     public int getCost(){return this.cost;}
     private String name = "UHC";
+    private Material icon = Material.GOLDEN_APPLE;
+    public Material getIcon() { return icon; }
     public String getName(){return this.name;}
     public void giveKit(Player player){
         ItemStack[] armor = new ItemStack[4];

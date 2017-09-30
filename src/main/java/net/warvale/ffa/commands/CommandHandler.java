@@ -2,7 +2,6 @@ package net.warvale.ffa.commands;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.*;
@@ -11,7 +10,6 @@ import net.warvale.ffa.commands.admin.MaxplayersCommand;
 import net.warvale.ffa.commands.admin.SetTypeCommand;
 import net.warvale.ffa.commands.admin.SetspawnCommand;
 import net.warvale.ffa.commands.admin.TogglestatsCommand;
-import net.warvale.ffa.commands.chat.GlobalMuteCommand;
 import net.warvale.ffa.commands.user.StatsCommand;
 import net.warvale.ffa.exceptions.CommandException;
 import net.warvale.ffa.gui.GUIManager;
@@ -128,8 +126,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
         cmds.add(new SetTypeCommand());
         cmds.add(new TogglestatsCommand());
 
-        // chat
-        cmds.add(new GlobalMuteCommand());
+
 
         //user
         cmds.add(new StatsCommand(gui));

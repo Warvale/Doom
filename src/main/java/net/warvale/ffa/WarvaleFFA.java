@@ -83,7 +83,7 @@ public class WarvaleFFA extends JavaPlugin {
 
     private void registerListeners(PluginManager pm) {
 
-        pm.registerEvents(ChatListener.getInstance(), this);
+
         pm.registerEvents(new SessionListener(this), this);
         pm.registerEvents(new DeathListener(), this);
         pm.registerEvents(new CommandListener(), this);

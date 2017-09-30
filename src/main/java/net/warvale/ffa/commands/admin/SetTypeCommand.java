@@ -2,10 +2,8 @@ package net.warvale.ffa.commands.admin;
 
 import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 import net.warvale.ffa.commands.AbstractCommand;
 import net.warvale.ffa.game.FFAMode;
-import net.warvale.ffa.listeners.ChatListener;
 import net.warvale.ffa.message.MessageManager;
 import net.warvale.ffa.message.PrefixType;
 

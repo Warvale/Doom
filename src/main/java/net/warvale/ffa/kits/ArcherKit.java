@@ -13,6 +13,8 @@ public class ArcherKit implements Kit{
     private int cost = 500;
     public int getCost(){return this.cost;}
     private String name = "Archer";
+    private Material icon = Material.BOW;
+    public Material getIcon() { return icon; }
     public String getName(){return this.name;}
     public void giveKit(Player player){
         ItemStack[] armor = new ItemStack[4];
@@ -28,7 +30,7 @@ public class ArcherKit implements Kit{
         player.getInventory().setArmorContents(armor);
         player.getInventory().setItem(0, new ItemStack(Material.WOOD_SWORD));
         ItemStack bow = new ItemStack(Material.BOW);
-        bow.addEnchantment(Enchantment.ARROW_DAMAGE, 2);
+        bow.addEnchantment(Enchantment.ARROW_DAMAGE, 1);
         bow.addEnchantment(Enchantment.ARROW_INFINITE, 1);
         player.getInventory().setItem(1, bow);
         Potion splash = new Potion(PotionType.SPEED, 1);
