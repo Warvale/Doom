@@ -33,11 +33,10 @@ public class SessionListener implements Listener {
         this.plugin = plugin;
     }
 @EventHandler (priority = EventPriority.HIGH)
-    public void onItemBreak(PlayerItemBreakEvent event) {
-        // This respawn's items that broke.
-        ItemStack meme = event.getBrokenItem().clone();
-        meme.setDurability(meme.getType().getMaxDurability());
-        event.getPlayer().getInventory().addItem(meme);
+    public void onItemBreak(PlayerItemDamageEvent event) {
+
+        event.getItem().setDurability(event.getItem().getType().getMaxDurability());
+
     }
 
     public void onHit(EntityDamageByEntityEvent event) {
