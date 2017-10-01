@@ -31,15 +31,16 @@ public class ArcherKit implements Kit{
         player.getInventory().setItem(0, new ItemStack(Material.WOOD_SWORD));
         ItemStack bow = new ItemStack(Material.BOW);
         bow.addEnchantment(Enchantment.ARROW_DAMAGE, 1);
+        bow.addEnchantment(Enchantment.ARROW_KNOCKBACK, 1);
         bow.addEnchantment(Enchantment.ARROW_INFINITE, 1);
         player.getInventory().setItem(1, bow);
         Potion splash = new Potion(PotionType.SPEED, 1);
         splash.setSplash(true);
 
         ItemStack potion = splash.toItemStack(1);
-        player.getInventory().setItem(2, potion);
+        /*player.getInventory().setItem(2, potion);
         player.getInventory().setItem(3, potion);
-        player.getInventory().setItem(4, potion);
+        player.getInventory().setItem(4, potion);*/
         player.getInventory().setItem(8, new ItemStack(Material.ARROW));
     }
 }
