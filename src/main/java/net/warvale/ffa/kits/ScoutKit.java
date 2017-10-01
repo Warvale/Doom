@@ -37,6 +37,7 @@ public class ScoutKit implements Kit{
         player.getInventory().setItem(1, potion);
         player.getInventory().setItem(2, potion);
         player.getInventory().setItem(3, potion);
+        player.getInventory().setItem(7, new ItemStack(Material.ENDER_PEARL, 1));
         player.getInventory().setItem(8, new ItemStack(Material.GOLDEN_APPLE, 2));
     }
 }
