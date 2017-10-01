@@ -19,8 +19,8 @@ public class PotKit implements Kit{
     public void giveKit(Player player){
         ItemStack[] armor = new ItemStack[4];
         armor[0] = new ItemStack(Material.IRON_BOOTS);
-        armor[1] = new ItemStack(Material.DIAMOND_LEGGINGS);
-        armor[2] = new ItemStack(Material.DIAMOND_CHESTPLATE);
+        armor[1] = new ItemStack(Material.IRON_LEGGINGS);
+        armor[2] = new ItemStack(Material.IRON_CHESTPLATE);
         armor[3] = new ItemStack(Material.IRON_HELMET);
         for (ItemStack stack : armor) {
             stack.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
@@ -33,7 +33,6 @@ public class PotKit implements Kit{
         ItemStack potion = splash.toItemStack(1);
         player.getInventory().setItem(1, potion);
         player.getInventory().setItem(2, potion);
-        player.getInventory().setItem(3, potion);
         
         Potion splashx = new Potion(PotionType.FIRE_RESISTANCE, 1);
         splashx.setSplash(true);
