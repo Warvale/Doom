@@ -32,12 +32,7 @@ public class SessionListener implements Listener {
     public SessionListener(WarvaleFFA plugin){
         this.plugin = plugin;
     }
-@EventHandler (priority = EventPriority.HIGH)
-    public void onItemBreak(PlayerItemDamageEvent event) {
 
-        event.getItem().setDurability(event.getItem().getType().getMaxDurability());
-
-    }
 
     public void onHit(EntityDamageByEntityEvent event) {
         if (!(event.getEntity() instanceof Player)) return;

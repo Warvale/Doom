@@ -4,7 +4,6 @@ import net.warvale.ffa.gui.GUI;
 import net.warvale.ffa.kits.*;
 import net.warvale.ffa.player.FFAPlayer;
 import net.warvale.ffa.player.PlayerManager;
-import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -16,7 +15,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,9 +54,10 @@ public class KitSelectorGUI extends GUI implements Listener {
         //Register kits here.
 
         kits.put("UHC", new UHCKit());
-        kits.put("MCSG", new MCSGKit());
         kits.put("Scout", new ScoutKit());
+        kits.put("MCSG", new MCSGKit());
         kits.put("Archer", new ArcherKit());
+        kits.put("Pot", new PotKit());
     }
 
 
@@ -88,7 +87,28 @@ public class KitSelectorGUI extends GUI implements Listener {
             player.getInventory().clear();
             kit.giveKit(player);
 
+
+            // Makes all items unbreakable. Not the best code, but it works.
+            for (int i = 0; i <= 35; i++) {
+                ItemStack wow = player.getInventory().getItem(i);
+                if (wow == null) return;
+                ItemMeta meta = wow.getItemMeta();
+                meta.spigot().setUnbreakable(true);
+                wow.setItemMeta(meta);
+                player.getInventory().setItem(i,wow);
+            }
+            ItemStack[] armor = player.getInventory().getArmorContents().clone();
+            for (int i = 0; i < armor.length; i++) {
+                ItemStack dankmemes = armor[i];
+                ItemMeta meta = dankmemes.getItemMeta();
+                meta.spigot().setUnbreakable(true);
+                dankmemes.setItemMeta(meta);
+            }
+            player.getInventory().setArmorContents(armor);
+
         }
+
+
         if (kits.size() > event.getSlot() && event.getClick().equals(ClickType.RIGHT)) {
             event.getWhoClicked().closeInventory();
 
@@ -107,6 +127,7 @@ public class KitSelectorGUI extends GUI implements Listener {
                 }
                 // purchasing the kit here.
                 ffaPlayer.addPurcashedKit(kit.getName());
+                ffaPlayer.setEmbers(ffaPlayer.getEmbers() - kit.getCost());
                 player.sendMessage(ChatColor.AQUA+"You have purchased the "+kit.getName().toUpperCase()+" kit!");
             }
 
@@ -144,7 +165,7 @@ public class KitSelectorGUI extends GUI implements Listener {
         int counter = 0;
         for (Map.Entry<String, Kit> entry : kits.entrySet())
         {
-            ItemStack kit = new ItemStack(Material.DIAMOND_SWORD, 1);
+            ItemStack kit = new ItemStack(entry.getValue().getIcon(), 1);
             ItemMeta kitMeta = kit.getItemMeta();
 
             kitMeta.setDisplayName("§a"+entry.getValue().getName());

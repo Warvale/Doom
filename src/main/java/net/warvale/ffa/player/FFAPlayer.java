@@ -72,9 +72,9 @@ public class FFAPlayer {
     getPlayer().setLevel(getLevel());
     }
     public int getLevel() {
-        int returning = 12;
-        for (int i = KitSelectorGUI.getLevelupxp().length; i < 1; i--) {
-                if (getXp() >= KitSelectorGUI.getLevelupxp()[i]) returning= i + 1;
+        int returning = -1;
+        for (int i = 11; i>=0; i--) {
+                if (this.getXp() >= KitSelectorGUI.getLevelupxp()[i]) returning = i + 1;
         }
         return returning;
     }
@@ -217,7 +217,7 @@ public class FFAPlayer {
                     connection = WarvaleFFA.getStorageBackend().getPoolManager().getConnection();
 
                     stmt = connection.prepareStatement("INSERT INTO `" + DatabaseUtils.getTable() + "` " +
-                            "(uuid, kills, deaths, killstreak, embers, xp, purchasedKits) VALUES (?, ?, ?, ?, ?)");
+                            "(uuid, kills, deaths, killstreak, embers, xp, purchasedKits) VALUES (?, ?, ?, ?, ?, ?, ?)");
                     stmt.setString(1, FFAPlayer.this.uuid.toString());
                     stmt.setInt(2, FFAPlayer.this.getTotalKills());
                     stmt.setInt(3, FFAPlayer.this.getTotalDeaths());
