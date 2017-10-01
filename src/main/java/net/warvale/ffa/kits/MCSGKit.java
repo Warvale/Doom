@@ -21,8 +21,8 @@ public class MCSGKit implements Kit{
         armor[2] = new ItemStack(Material.LEATHER_CHESTPLATE);
         armor[3] = new ItemStack(Material.CHAINMAIL_HELMET);
         player.getInventory().setArmorContents(armor);
-        ItemStack sword = new ItemStack(Material.IRON_SWORD);
-        sword.addEnchantment(Enchantment.DAMAGE_ALL, 1);
+        ItemStack sword = new ItemStack(Material.STONE_SWORD);
+        sword.addEnchantment(Enchantment.DAMAGE_ALL, 2);
         player.getInventory().setItem(0, sword);
         player.getInventory().setItem(1, new ItemStack(Material.FISHING_ROD));
         player.getInventory().setItem(2, new ItemStack(Material.BOW));
