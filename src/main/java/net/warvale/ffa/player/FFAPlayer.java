@@ -72,7 +72,7 @@ public class FFAPlayer {
     getPlayer().setLevel(getLevel());
     }
     public int getLevel() {
-        int returning = -1;
+        int returning = 0;
         for (int i = 11; i>=0; i--) {
                 if (this.getXp() >= KitSelectorGUI.getLevelupxp()[i]) returning = i + 1;
         }
