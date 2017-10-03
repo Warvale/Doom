@@ -35,7 +35,7 @@ public class DeathListener implements Listener {
             return;
         }
 
-
+        killer.setHealth(killer.getHealth()+6);
         //clear items of the player
         player.getInventory().clear();
 
@@ -127,8 +127,7 @@ public class DeathListener implements Listener {
             }
 
         }
-        PotionEffect regenlol = new PotionEffect(PotionEffectType.REGENERATION,5,2);
-        killer.addPotionEffect(regenlol, true);
+
     }
 
     @EventHandler (priority = EventPriority.HIGH)
