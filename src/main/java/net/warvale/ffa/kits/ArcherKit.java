@@ -13,7 +13,7 @@ public class ArcherKit implements Kit{
     private int cost = 500;
     public int getCost(){return this.cost;}
     private String name = "Archer";
-    private Material icon = Material.BOW;
+    private Material icon = Material.BOW    ;
     public Material getIcon() { return icon; }
     public String getName(){return this.name;}
     public void giveKit(Player player){

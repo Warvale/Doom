@@ -35,7 +35,7 @@ public class DeathListener implements Listener {
             return;
         }
 
-        killer.setHealth(killer.getHealth()+6);
+        if (killer.getHealth()+6 > 20) {} else killer.setHealth(killer.getHealth()+6);
         //clear items of the player
         player.getInventory().clear();
 
