@@ -86,9 +86,10 @@ public class KitSelectorGUI extends GUI implements Listener {
             }
             player.getInventory().clear();
             kit.giveKit(player);
+            KitManager.setUUID(player.getUniqueId(), kit);
 
 
-            // Makes all items unbreakable. Not the best code, but it works.
+            // Makes all items unbreakable.
             for (int i = 0; i <= 35; i++) {
                 ItemStack wow = player.getInventory().getItem(i);
                 if (wow == null) return;

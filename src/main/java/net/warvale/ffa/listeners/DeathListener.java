@@ -1,7 +1,12 @@
 package net.warvale.ffa.listeners;
 
-import net.warvale.ffa.gui.GUIManager;
+import net.warvale.ffa.WarvaleFFA;
 import net.warvale.ffa.gui.guis.KitSelectorGUI;
+import net.warvale.ffa.kits.Kit;
+import net.warvale.ffa.kits.KitManager;
+import net.warvale.ffa.message.MessageManager;
+import net.warvale.ffa.player.FFAPlayer;
+import net.warvale.ffa.player.PlayerManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.*;
@@ -14,14 +19,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
-import net.warvale.ffa.WarvaleFFA;
-import net.warvale.ffa.message.MessageManager;
-import net.warvale.ffa.player.FFAPlayer;
-import net.warvale.ffa.player.PlayerManager;
-import net.warvale.ffa.utils.ItemStackUtils;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 public class DeathListener implements Listener {
 
@@ -33,6 +31,11 @@ public class DeathListener implements Listener {
 
         if (player == null || killer == null) {
             return;
+        }
+
+        Kit killerKit = KitManager.getUUID(killer.getUniqueId());
+        if (killerKit != null) {
+            killer.getInventory().addItem(killerKit.getKillReward());
         }
 
         if (killer.getHealth()+6 > 20) {} else killer.setHealth(killer.getHealth()+6);

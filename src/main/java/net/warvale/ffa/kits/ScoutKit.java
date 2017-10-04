@@ -5,8 +5,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.Potion;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 
 public class ScoutKit implements Kit{
@@ -15,6 +13,12 @@ public class ScoutKit implements Kit{
     private String name = "Scout";
     private Material icon = Material.STRING;
     public Material getIcon() { return icon; }
+    public ItemStack getKillReward() {
+        Potion splash = new Potion(PotionType.SPEED, 1);
+        splash.setSplash(true);
+        ItemStack potion = splash.toItemStack(1);
+        return potion;
+    }
     public String getName(){return this.name;}
     public void giveKit(Player player){
         ItemStack[] armor = new ItemStack[4];

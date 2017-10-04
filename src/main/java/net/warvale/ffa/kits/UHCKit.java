@@ -1,17 +1,16 @@
 package net.warvale.ffa.kits;
 
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 
 public class UHCKit implements Kit{
     private int cost = 0;
     public int getCost(){return this.cost;}
     private String name = "UHC";
     private Material icon = Material.GOLDEN_APPLE;
+    public ItemStack getKillReward() {return new ItemStack(Material.GOLDEN_APPLE);
+    }
     public Material getIcon() { return icon; }
     public String getName(){return this.name;}
     public void giveKit(Player player){

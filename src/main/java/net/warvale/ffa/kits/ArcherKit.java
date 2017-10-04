@@ -5,15 +5,14 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.Potion;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
 
 public class ArcherKit implements Kit{
     private int cost = 500;
     public int getCost(){return this.cost;}
     private String name = "Archer";
-    private Material icon = Material.BOW    ;
+    private Material icon = Material.BOW;
+    public ItemStack getKillReward() { return new ItemStack(Material.ARROW); }
     public Material getIcon() { return icon; }
     public String getName(){return this.name;}
     public void giveKit(Player player){
