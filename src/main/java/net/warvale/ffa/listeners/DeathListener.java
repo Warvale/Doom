@@ -28,15 +28,18 @@ public class DeathListener implements Listener {
         Player player = event.getEntity().getPlayer();
         Player killer = event.getEntity().getKiller();
         if (player == null) return;
-        EntityDamageEvent.DamageCause dclol = player.getLastDamageCause().getCause();
-        if (dclol.equals(EntityDamageEvent.DamageCause.LAVA) || dclol.equals(EntityDamageEvent.DamageCause.FIRE) || dclol.equals(EntityDamageEvent.DamageCause.DROWNING) || dclol.equals(EntityDamageEvent.DamageCause.POISON) || dclol.equals(EntityDamageEvent.DamageCause.MAGIC)) {
-            event.setDeathMessage(ChatColor.RED+player.getName()+ChatColor.GRAY+" was toasted.");
+        EntityDamageEvent.DamageCause dclol;
+        if (player.getLastDamageCause() == null) dclol = EntityDamageEvent.DamageCause.CUSTOM;
+         else dclol = player.getLastDamageCause().getCause();
+        if (dclol.equals(EntityDamageEvent.DamageCause.CUSTOM)|| dclol.equals(EntityDamageEvent.DamageCause.LAVA) || dclol.equals(EntityDamageEvent.DamageCause.FIRE) || dclol.equals(EntityDamageEvent.DamageCause.DROWNING) || dclol.equals(EntityDamageEvent.DamageCause.POISON) || dclol.equals(EntityDamageEvent.DamageCause.MAGIC)) {
+            event.setDeathMessage(ChatColor.RED+player.getName()+ChatColor.GRAY+" died.");
             player.getInventory().clear();
             player.getInventory().setArmorContents(new ItemStack[4]);
             FFAPlayer ffaPlayer = PlayerManager.getInstance().getFFAPlayer(player.getUniqueId());
             ffaPlayer.addDeath();
             ffaPlayer.resetKillStreak();
             ffaPlayer.addTotalDeath();
+            player.spigot().respawn();
             return;
         }
 

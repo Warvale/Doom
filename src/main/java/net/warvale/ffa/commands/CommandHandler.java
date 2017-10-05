@@ -1,20 +1,21 @@
 package net.warvale.ffa.commands;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.bukkit.ChatColor;
-import org.bukkit.command.*;
 import net.warvale.ffa.WarvaleFFA;
 import net.warvale.ffa.commands.admin.MaxplayersCommand;
 import net.warvale.ffa.commands.admin.SetTypeCommand;
 import net.warvale.ffa.commands.admin.SetspawnCommand;
 import net.warvale.ffa.commands.admin.TogglestatsCommand;
 import net.warvale.ffa.commands.user.StatsCommand;
+import net.warvale.ffa.commands.user.SuicideCommand;
 import net.warvale.ffa.exceptions.CommandException;
 import net.warvale.ffa.gui.GUIManager;
 import net.warvale.ffa.message.MessageManager;
 import net.warvale.ffa.message.PrefixType;
+import org.bukkit.ChatColor;
+import org.bukkit.command.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class CommandHandler implements CommandExecutor, TabCompleter {
@@ -130,6 +131,7 @@ public class CommandHandler implements CommandExecutor, TabCompleter {
 
         //user
         cmds.add(new StatsCommand(gui));
+        cmds.add(new SuicideCommand());
 
 
 

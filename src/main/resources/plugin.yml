@@ -16,3 +16,5 @@ commands:
     description: Enables/Disables stats for the ffa
   stats:
     description: View players stats
+  suicide:
+    description: Kill yourself.
