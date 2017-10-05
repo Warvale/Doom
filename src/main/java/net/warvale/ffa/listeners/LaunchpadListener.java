@@ -1,6 +1,5 @@
 package net.warvale.ffa.listeners;
 
-import javafx.scene.layout.Priority;
 import net.warvale.ffa.WarvaleFFA;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -23,7 +22,10 @@ public class LaunchpadListener implements Listener {
         Block curr = e.getTo().getBlock();
         Block below = curr.getRelative(BlockFace.DOWN);
         if (below.getType().equals(Material.WOOL) && curr.getType().equals(Material.IRON_PLATE)) {
-            e.getPlayer().setVelocity(new Vector(e.getPlayer().getVelocity().getX()+2.0D, 1.0D, e.getPlayer().getVelocity().getZ()));
+            e.getPlayer().setVelocity(e.getPlayer().getLocation().getDirection().multiply(10));
+            Vector velc = e.getPlayer().getVelocity();
+            velc.setY(1.0F);
+            e.getPlayer().setVelocity(velc);
         }
     }
 }
