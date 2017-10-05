@@ -1,29 +1,25 @@
 package net.warvale.ffa.listeners;
 
 
-import net.warvale.ffa.gui.GUIManager;
+import net.warvale.ffa.WarvaleFFA;
 import net.warvale.ffa.gui.guis.KitSelectorGUI;
+import net.warvale.ffa.message.MessageManager;
+import net.warvale.ffa.message.PrefixType;
 import net.warvale.ffa.player.FFAPlayer;
+import net.warvale.ffa.player.PlayerManager;
+import net.warvale.ffa.scoreboards.FFAScoreboard;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
-import org.bukkit.entity.Item;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.event.server.ServerListPingEvent;
-import net.warvale.ffa.WarvaleFFA;
-import net.warvale.ffa.game.FFAMode;
-import net.warvale.ffa.message.MessageManager;
-import net.warvale.ffa.message.PrefixType;
-import net.warvale.ffa.player.PlayerManager;
-import net.warvale.ffa.scoreboards.FFAScoreboard;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 
@@ -33,6 +29,11 @@ public class SessionListener implements Listener {
         this.plugin = plugin;
     }
 
+    public void onEpearlDmg(PlayerTeleportEvent event) {
+        if (!event.getCause().equals(EntityType.ENDER_PEARL)) return;
+        event.setCancelled(true);
+        event.getPlayer().teleport(event.getTo());
+    }
 
     public void onHit(EntityDamageByEntityEvent event) {
         if (!(event.getEntity() instanceof Player)) return;
