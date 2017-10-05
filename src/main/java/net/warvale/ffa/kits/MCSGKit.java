@@ -10,7 +10,7 @@ public class MCSGKit implements Kit{
     public int getCost(){return this.cost;}
     private String name = "MCSG";
     private Material icon = Material.FISHING_ROD;
-    public ItemStack getKillReward() { return new ItemStack(Material.GOLDEN_APPLE); }
+    public ItemStack getKillReward() { return new ItemStack(Material.ARROW, 3); }
     public Material getIcon() { return icon; }
     public String getName(){return this.name;}
     public void giveKit(Player player){
@@ -25,7 +25,7 @@ public class MCSGKit implements Kit{
         player.getInventory().setItem(0, sword);
         player.getInventory().setItem(1, new ItemStack(Material.FISHING_ROD));
         player.getInventory().setItem(2, new ItemStack(Material.BOW));
-        player.getInventory().setItem(7, new ItemStack(Material.ARROW, 16));
+        player.getInventory().setItem(7, new ItemStack(Material.ARROW, 4));
         player.getInventory().setItem(8, new ItemStack(Material.GOLDEN_APPLE));
     }
 }
