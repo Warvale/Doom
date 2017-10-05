@@ -35,6 +35,7 @@ public class DeathListener implements Listener {
             player.getInventory().setArmorContents(new ItemStack[4]);
             FFAPlayer ffaPlayer = PlayerManager.getInstance().getFFAPlayer(player.getUniqueId());
             ffaPlayer.addDeath();
+            ffaPlayer.resetKillStreak();
             ffaPlayer.addTotalDeath();
             return;
         }
@@ -72,8 +73,9 @@ public class DeathListener implements Listener {
                 ffaPlayer.setHighestKillStreak(ffaPlayer.getKillStreak());
             }
 
-            ffaPlayer.resetKillStreak();
+
         }
+        ffaPlayer.resetKillStreak();
 
         // leveling / xp system
         int levelbeforechanges = ffakiller.getLevel();
