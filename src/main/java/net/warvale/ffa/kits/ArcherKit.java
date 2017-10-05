@@ -12,7 +12,7 @@ public class ArcherKit implements Kit{
     public int getCost(){return this.cost;}
     private String name = "Archer";
     private Material icon = Material.BOW;
-    public ItemStack getKillReward() { return new ItemStack(Material.ARROW); }
+    public ItemStack getKillReward() { return new ItemStack(Material.ARROW, 16); }
     public Material getIcon() { return icon; }
     public String getName(){return this.name;}
     public void giveKit(Player player){
@@ -31,7 +31,6 @@ public class ArcherKit implements Kit{
         ItemStack bow = new ItemStack(Material.BOW);
         bow.addEnchantment(Enchantment.ARROW_DAMAGE, 1);
         bow.addEnchantment(Enchantment.ARROW_KNOCKBACK, 1);
-        bow.addEnchantment(Enchantment.ARROW_INFINITE, 1);
         player.getInventory().setItem(1, bow);
         Potion splash = new Potion(PotionType.SPEED, 1);
         splash.setSplash(true);
@@ -40,6 +39,6 @@ public class ArcherKit implements Kit{
         /*player.getInventory().setItem(2, potion);
         player.getInventory().setItem(3, potion);
         player.getInventory().setItem(4, potion);*/
-        player.getInventory().setItem(8, new ItemStack(Material.ARROW));
+        player.getInventory().setItem(8, new ItemStack(Material.ARROW, 16));
     }
 }
