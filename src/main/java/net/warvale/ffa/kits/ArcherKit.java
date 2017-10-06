@@ -23,7 +23,7 @@ public class ArcherKit implements Kit{
     public String getName(){return this.name;}
     public void giveKit(Player player){
         ItemStack[] armor = new ItemStack[4];
-        armor[0] = new ItemStack(Material.CHAINMAIL_BOOTS);
+        armor[0] = new ItemStack(Material.IRON_BOOTS);
         armor[0].addEnchantment(Enchantment.PROTECTION_PROJECTILE, 3);
         armor[1] = new ItemStack(Material.CHAINMAIL_LEGGINGS);
         armor[1].addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
@@ -36,7 +36,6 @@ public class ArcherKit implements Kit{
         player.getInventory().setItem(0, new ItemStack(Material.WOOD_SWORD));
         ItemStack bow = new ItemStack(Material.BOW);
         bow.addEnchantment(Enchantment.ARROW_DAMAGE, 1);
-        bow.addEnchantment(Enchantment.ARROW_KNOCKBACK, 1);
         player.getInventory().setItem(1, bow);
         Potion splash = new Potion(PotionType.SPEED, 1);
         splash.setSplash(true);
