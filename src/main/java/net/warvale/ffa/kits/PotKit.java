@@ -47,7 +47,7 @@ public class PotKit implements Kit{
         ItemStack potionx = splashx.toItemStack(1);
         player.getInventory().setItem(4, potionx);
         
-        Potion splashy = new Potion(PotionType.SPEED, 1);
+        Potion splashy = new Potion(PotionType.DAMAGE_RESISTANCE, 1);
         splashy.setSplash(true);
         ItemStack potiony = splashy.toItemStack(1);
         player.getInventory().setItem(5, potiony);
