@@ -44,6 +44,6 @@ public class ArcherKit implements Kit{
         /*player.getInventory().setItem(2, potion);
         player.getInventory().setItem(3, potion);
         player.getInventory().setItem(4, potion);*/
-        player.getInventory().setItem(8, new ItemStack(Material.ARROW, 16));
+        player.getInventory().setItem(8, new ItemStack(Material.ARROW, 20));
     }
 }
