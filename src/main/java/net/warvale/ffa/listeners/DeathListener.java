@@ -49,7 +49,9 @@ public class DeathListener implements Listener {
 
         Kit killerKit = KitManager.getUUID(killer.getUniqueId());
         if (killerKit != null) {
-            killer.getInventory().addItem(killerKit.getKillReward());
+            for (ItemStack is : killerKit.getKillRewards()) {
+                player.getInventory().addItem(is);
+            }
         }
 
         if (killer.getHealth()+6 > 20) {} else killer.setHealth(killer.getHealth()+6);
@@ -68,7 +70,7 @@ public class DeathListener implements Listener {
 
 
 
-        if (ffaPlayer.getKillStreak() > 5) {
+        if (ffaPlayer.getKillStreak() >= 5) {
             MessageManager.broadcast(ChatColor.AQUA + killer.getName() + ChatColor.GRAY + " has ended " + ChatColor.AQUA +
                     player.getName() + ChatColor.GRAY + "'s killstreak of " + ChatColor.RED + ffaPlayer.getKillStreak() + ChatColor.GRAY + "!");
 

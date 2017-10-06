@@ -7,18 +7,23 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionType;
 
+import java.util.ArrayList;
+
 public class ScoutKit implements Kit{
     private int cost = 10000;
     public int getCost(){return this.cost;}
     private String name = "Scout";
     private Material icon = Material.STRING;
     public Material getIcon() { return icon; }
-    public ItemStack getKillReward() {
+    public ArrayList<ItemStack> getKillRewards() {
+        ArrayList<ItemStack> ret = new ArrayList<>();
         Potion splash = new Potion(PotionType.SPEED, 1);
         splash.setSplash(true);
         ItemStack potion = splash.toItemStack(1);
-        return potion;
+        ret.add(potion);
+        return ret;
     }
+
     public String getName(){return this.name;}
     public void giveKit(Player player){
         ItemStack[] armor = new ItemStack[4];

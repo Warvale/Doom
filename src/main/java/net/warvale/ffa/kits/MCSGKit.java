@@ -5,12 +5,18 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+
 public class MCSGKit implements Kit{
     private int cost = 25000;
     public int getCost(){return this.cost;}
     private String name = "MCSG";
     private Material icon = Material.FISHING_ROD;
-    public ItemStack getKillReward() { return new ItemStack(Material.ARROW, 3); }
+    public ArrayList<ItemStack> getKillRewards() {
+        ArrayList<ItemStack> ret = new ArrayList<>();
+        ret.add(new ItemStack(Material.ARROW,3));
+        return ret;
+    }
     public Material getIcon() { return icon; }
     public String getName(){return this.name;}
     public void giveKit(Player player){

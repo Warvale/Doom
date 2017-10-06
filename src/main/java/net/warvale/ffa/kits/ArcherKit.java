@@ -7,12 +7,18 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionType;
 
+import java.util.ArrayList;
+
 public class ArcherKit implements Kit{
     private int cost = 500;
     public int getCost(){return this.cost;}
     private String name = "Archer";
     private Material icon = Material.BOW;
-    public ItemStack getKillReward() { return new ItemStack(Material.ARROW, 16); }
+    public ArrayList<ItemStack> getKillRewards() {
+        ArrayList<ItemStack> ret = new ArrayList<>();
+        ret.add(new ItemStack(Material.ARROW,16));
+        return ret;
+    }
     public Material getIcon() { return icon; }
     public String getName(){return this.name;}
     public void giveKit(Player player){

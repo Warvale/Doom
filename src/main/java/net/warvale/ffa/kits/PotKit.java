@@ -7,17 +7,21 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionType;
 
+import java.util.ArrayList;
+
 public class PotKit implements Kit{
     private int cost = 5000;
     public int getCost(){return this.cost;}
     private String name = "Pot";
     private Material icon = Material.POTION;
     public Material getIcon() { return icon; }
-    public ItemStack getKillReward() {
+    public ArrayList<ItemStack> getKillRewards() {
+        ArrayList<ItemStack> ret = new ArrayList<>();
         Potion splash = new Potion(PotionType.INSTANT_HEAL, 1);
         splash.setSplash(true);
         ItemStack potion = splash.toItemStack(1);
-        return potion;
+        ret.add(potion);
+        return ret;
     }
     public String getName(){return this.name;}
     public void giveKit(Player player){
