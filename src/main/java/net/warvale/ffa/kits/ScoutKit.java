@@ -43,8 +43,13 @@ public class ScoutKit implements Kit{
         Potion splash = new Potion(PotionType.SPEED, 1);
         splash.setSplash(true);
         ItemStack potion = splash.toItemStack(1);
+        
+        Potion splash2 = new Potion(PotionType.JUMP, 1);
+        splash2.setSplash(true);
+        ItemStack potion2 = splash2.toItemStack(1);
+        
         player.getInventory().setItem(1, potion);
-        player.getInventory().setItem(7, new ItemStack(Material.ENDER_PEARL, 1));
+        player.getInventory().setItem(2, potion2);
         player.getInventory().setItem(8, new ItemStack(Material.GOLDEN_APPLE, 2));
     }
 }
