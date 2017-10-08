@@ -16,10 +16,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class KitSelectorGUI extends GUI implements Listener {
 
@@ -30,7 +27,7 @@ public class KitSelectorGUI extends GUI implements Listener {
     }
 
     private final Map<String, Inventory> inventories = new HashMap<String, Inventory>();
-    private Map<String, Kit> kits = new HashMap();
+    private Map<String, Kit> kits = new LinkedHashMap<>();
     private static int[] levelupxp = new int[12];
 
     public static int[] getLevelupxp() {
