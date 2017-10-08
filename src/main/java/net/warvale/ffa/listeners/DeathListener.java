@@ -27,22 +27,6 @@ public class DeathListener implements Listener {
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getEntity().getPlayer();
         Player killer = event.getEntity().getKiller();
-        if (player == null) return;
-        EntityDamageEvent.DamageCause dclol;
-        if (player.getLastDamageCause() == null) dclol = EntityDamageEvent.DamageCause.CUSTOM;
-         else dclol = player.getLastDamageCause().getCause();
-        if (dclol.equals(EntityDamageEvent.DamageCause.CUSTOM)|| dclol.equals(EntityDamageEvent.DamageCause.LAVA) || dclol.equals(EntityDamageEvent.DamageCause.FIRE) || dclol.equals(EntityDamageEvent.DamageCause.DROWNING) || dclol.equals(EntityDamageEvent.DamageCause.POISON) || dclol.equals(EntityDamageEvent.DamageCause.MAGIC)) {
-            event.setDeathMessage(ChatColor.RED+player.getName()+ChatColor.GRAY+" died.");
-            player.getInventory().clear();
-            player.getInventory().setArmorContents(new ItemStack[4]);
-            FFAPlayer ffaPlayer = PlayerManager.getInstance().getFFAPlayer(player.getUniqueId());
-            ffaPlayer.addDeath();
-            ffaPlayer.resetKillStreak();
-            ffaPlayer.addTotalDeath();
-            player.spigot().respawn();
-            return;
-        }
-
         if (player == null || killer == null) {
             return;
         }
@@ -50,11 +34,11 @@ public class DeathListener implements Listener {
         Kit killerKit = KitManager.getUUID(killer.getUniqueId());
         if (killerKit != null) {
             for (ItemStack is : killerKit.getKillRewards()) {
-                player.getInventory().addItem(is);
+                killer.getInventory().addItem(is);
             }
         }
 
-        if (killer.getHealth()+6 > 20) {} else killer.setHealth(killer.getHealth()+6);
+        if (killer.getHealth()+8 > 20) {} else killer.setHealth(killer.getHealth()+8);
         //clear items of the player
         player.getInventory().clear();
 
@@ -147,6 +131,14 @@ public class DeathListener implements Listener {
                 event.setDeathMessage(null);
             }
 
+        } else {
+            event.setDeathMessage(ChatColor.RED+player.getName()+ChatColor.GRAY+" died.");
+            player.getInventory().clear();
+            player.getInventory().setArmorContents(new ItemStack[4]);
+            ffaPlayer.addDeath();
+            ffaPlayer.resetKillStreak();
+            ffaPlayer.addTotalDeath();
+            player.spigot().respawn();
         }
 
     }
