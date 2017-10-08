@@ -36,7 +36,7 @@ public class ScoutKit implements Kit{
         }
         player.getInventory().setArmorContents(armor);
         ItemStack sword = new ItemStack(Material.STONE_SWORD);
-        sword.addEnchantment(Enchantment.DAMAGE_ALL, 2);
+        sword.addEnchantment(Enchantment.DAMAGE_ALL, 1);
         player.getInventory().setItem(0, sword);
 
 
