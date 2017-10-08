@@ -4,8 +4,6 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.Potion;
-import org.bukkit.potion.PotionType;
 
 import java.util.ArrayList;
 
@@ -42,8 +40,8 @@ public class PyroKit implements Kit {
         bow.addEnchantment(Enchantment.ARROW_FIRE, 1);
         player.getInventory().setItem(1, bow);
 
-        ItemStack potion = splash.toItemStack(1);
-        /*player.getInventory().setItem(2, potion);
+        /*ItemStack potion = splash.toItemStack(1);
+        player.getInventory().setItem(2, potion);
         player.getInventory().setItem(3, potion);
         player.getInventory().setItem(4, potion);*/
         player.getInventory().setItem(8, new ItemStack(Material.ARROW, 4));
