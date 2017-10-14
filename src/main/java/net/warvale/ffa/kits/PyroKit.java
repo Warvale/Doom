@@ -23,16 +23,14 @@ public class PyroKit implements Kit {
         ItemStack[] armor = new ItemStack[4];
         armor[0] = new ItemStack(Material.DIAMOND_BOOTS);
         armor[0].addEnchantment(Enchantment.PROTECTION_PROJECTILE, 3);
-        armor[1] = new ItemStack(Material.LEATHER_LEGGINGS);
+        armor[1] = new ItemStack(Material.GOLD_LEGGINGS);
         armor[1].addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
         armor[1].addEnchantment(Enchantment.DURABILITY, 1);
         armor[2] = new ItemStack(Material.LEATHER_CHESTPLATE);
         armor[2].addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
-//        armor[3] = new ItemStack(Material.LEATHER_HELMET);
-//        armor[3].addEnchantment(Enchantment.DURABILITY, 1);
         player.getInventory().setArmorContents(armor);
         
-        ItemStack sword = new ItemStack(Material.WOOD_SWORD);
+        ItemStack sword = new ItemStack(Material.STONE_SWORD);
         sword.addEnchantment(Enchantment.FIRE_ASPECT, 1);
         player.getInventory().setItem(0, sword);
         
@@ -40,10 +38,6 @@ public class PyroKit implements Kit {
         bow.addEnchantment(Enchantment.ARROW_FIRE, 1);
         player.getInventory().setItem(1, bow);
 
-        /*ItemStack potion = splash.toItemStack(1);
-        player.getInventory().setItem(2, potion);
-        player.getInventory().setItem(3, potion);
-        player.getInventory().setItem(4, potion);*/
-        player.getInventory().setItem(8, new ItemStack(Material.ARROW, 4));
+        player.getInventory().setItem(8, new ItemStack(Material.ARROW, 6));
     }
 }
