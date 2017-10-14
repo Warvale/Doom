@@ -28,8 +28,8 @@ public class PyroKit implements Kit {
         armor[1].addEnchantment(Enchantment.DURABILITY, 1);
         armor[2] = new ItemStack(Material.LEATHER_CHESTPLATE);
         armor[2].addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
-        armor[3] = new ItemStack(Material.LEATHER_HELMET); 
-        armor[3].addEnchantment(Enchantment.DURABILITY, 1);
+//        armor[3] = new ItemStack(Material.LEATHER_HELMET);
+//        armor[3].addEnchantment(Enchantment.DURABILITY, 1);
         player.getInventory().setArmorContents(armor);
         
         ItemStack sword = new ItemStack(Material.WOOD_SWORD);
