@@ -105,7 +105,7 @@ public class KitSelectorGUI extends GUI implements Listener {
                 player.sendMessage(ChatColor.RED+"You already have that Kit!");
                 return;
             } else if (!ffaPlayer.hasKit(kit.getName())) {
-                if (ffaPlayer.getEmbers() <= kit.getCost()) {
+                if (ffaPlayer.getEmbers() < kit.getCost()) {
                     player.sendMessage(ChatColor.RED+"You do not have enough "+ChatColor.GREEN+"Embers"+ChatColor.RED+" to buy this kit! "+ChatColor.GRAY+"(You need "+ String.valueOf(kit.getCost()-ffaPlayer.getEmbers())+" more Embers to buy this kit!");
                 return;
                 }

@@ -31,6 +31,6 @@ public class UHCKit implements Kit{
         player.getInventory().setArmorContents(armor);
         ItemStack sword = new ItemStack(Material.IRON_SWORD);
         player.getInventory().setItem(0, sword);
-        player.getInventory().setItem(8, new ItemStack(Material.GOLDEN_APPLE, 2));
+        player.getInventory().setItem(1, new ItemStack(Material.GOLDEN_APPLE, 2));
     }
 }

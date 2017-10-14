@@ -9,6 +9,7 @@ import net.warvale.ffa.player.FFAPlayer;
 import net.warvale.ffa.player.PlayerManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Sound;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -68,7 +69,7 @@ public class DeathListener implements Listener {
         FFAPlayer ffakiller = PlayerManager.getInstance().getFFAPlayer(killer.getUniqueId());
         ffakiller.setEmbers(ffakiller.getEmbers()+20);
         killer.sendMessage(ChatColor.GOLD + "+20 Embers");
-
+        killer.playSound(player.getLocation(), Sound.ANVIL_BREAK,10,1);
 
 
         if (ffaPlayer.getKillStreak() >= 5) {
