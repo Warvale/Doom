@@ -35,7 +35,7 @@ public class DeathListener implements Listener {
             public void run() {
                 player.spigot().respawn();
             }}, 1L);
-        if (player.getLastDamageCause() == null) {
+        if (killer == null) {
 
             event.setDeathMessage(ChatColor.RED + player.getName() + ChatColor.GRAY + " died.");
             player.getInventory().clear();
