@@ -27,10 +27,28 @@ public class DeathListener implements Listener {
     public void onDeath(PlayerDeathEvent event) {
         Player player = event.getEntity().getPlayer();
         Player killer = event.getEntity().getKiller();
-        if (player == null || killer == null) {
+        if (player == null) {
             return;
         }
+        Bukkit.getScheduler().scheduleSyncDelayedTask(WarvaleFFA.get(), new Runnable() {
+            @Override
+            public void run() {
+                player.spigot().respawn();
+            }}, 1L);
+        if (player.getLastDamageCause() == null) {
 
+            event.setDeathMessage(ChatColor.RED + player.getName() + ChatColor.GRAY + " died.");
+            player.getInventory().clear();
+            player.getInventory().setArmorContents(new ItemStack[4]);
+            FFAPlayer ffaPlayer = PlayerManager.getInstance().getFFAPlayer(player.getUniqueId());
+            ffaPlayer.addDeath();
+            ffaPlayer.resetKillStreak();
+            ffaPlayer.addTotalDeath();
+
+        }
+        if (killer == null) {
+            return;
+        }
         Kit killerKit = KitManager.getUUID(killer.getUniqueId());
         if (killerKit != null) {
             for (ItemStack is : killerKit.getKillRewards()) {
@@ -44,7 +62,6 @@ public class DeathListener implements Listener {
 
         //update player stats
         FFAPlayer ffaPlayer = PlayerManager.getInstance().getFFAPlayer(player.getUniqueId());
-            player.spigot().respawn(); // insta respawn
         player.getInventory().setArmorContents(new ItemStack[4]);
         ffaPlayer.addDeath();
         ffaPlayer.addTotalDeath();
@@ -131,14 +148,6 @@ public class DeathListener implements Listener {
                 event.setDeathMessage(null);
             }
 
-        } else {
-            event.setDeathMessage(ChatColor.RED+player.getName()+ChatColor.GRAY+" died.");
-            player.getInventory().clear();
-            player.getInventory().setArmorContents(new ItemStack[4]);
-            ffaPlayer.addDeath();
-            ffaPlayer.resetKillStreak();
-            ffaPlayer.addTotalDeath();
-            player.spigot().respawn();
         }
 
     }

@@ -1,14 +1,11 @@
 package net.warvale.ffa.player;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import net.warvale.ffa.gui.guis.KitSelectorGUI;
+import net.warvale.ffa.WarvaleFFA;
+import net.warvale.ffa.utils.DatabaseUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import net.warvale.ffa.WarvaleFFA;
-import net.warvale.ffa.utils.DatabaseUtils;
 
-import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -72,19 +69,20 @@ public class FFAPlayer {
     getPlayer().setLevel(getLevel());
     }
     public int getLevel() {
-        int returning = 0;
-        for (int i = 11; i>=0; i--) {
-                if (this.getXp() >= KitSelectorGUI.getLevelupxp()[i]) returning = i + 1;
+        int lvl = 0;
+        for (int val : XPManager.getLevelupxp()) {
+
+                if (this.xp >= val) lvl++;
         }
-        return returning;
+        return lvl;
     }
     public int getXPtoNextLevel() {
-        return KitSelectorGUI.getLevelupxp()[this.getLevel()-2]-(getXp() - getUselessXP());
+        return XPManager.getLevelupxp()[this.getLevel()-2]-(getXp() - getUselessXP());
     }
     public int getUselessXP() {
         int useless = 0;
         for (int i = getLevel() - 1; i < 1; i--) {
-            useless+=KitSelectorGUI.getLevelupxp()[this.getLevel()];
+            useless+=XPManager.getLevelupxp()[this.getLevel()];
         }
         return useless;
     }
