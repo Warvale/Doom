@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 
 public class MCSGKit implements Kit{
-    private int cost = 25000;
+    private int cost = 5000;
     public int getCost(){return this.cost;}
     private String name = "MCSG";
     private Material icon = Material.FISHING_ROD;
