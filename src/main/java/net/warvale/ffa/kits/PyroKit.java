@@ -8,7 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 
 public class PyroKit implements Kit {
-    private int cost = 30000;
+    private int cost = 10000;
     public int getCost(){return this.cost;}
     private String name = "Pyro";
     private Material icon = Material.FIREBALL;
