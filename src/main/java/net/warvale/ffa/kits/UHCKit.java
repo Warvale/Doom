@@ -15,7 +15,6 @@ public class UHCKit implements Kit{
     public ArrayList<ItemStack> getKillRewards() {
         ArrayList<ItemStack> ret = new ArrayList<>();
         ret.add(new ItemStack(Material.GOLDEN_APPLE, 1));
-        ret.add(new ItemStack(Material.ARROW, 3));
         return ret;
     }
     public Material getIcon() { return icon; }
