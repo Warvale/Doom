@@ -30,12 +30,12 @@ public class ArcherKit implements Kit{
         armor[1].addEnchantment(Enchantment.DURABILITY, 1);
         armor[2] = new ItemStack(Material.CHAINMAIL_CHESTPLATE);
         armor[2].addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
-        armor[3] = new ItemStack(Material.LEATHER_HELMET); //
+        armor[3] = new ItemStack(Material.DIAMOND_HELMET); //
         armor[3].addEnchantment(Enchantment.DURABILITY, 1);
         player.getInventory().setArmorContents(armor);
         player.getInventory().setItem(0, new ItemStack(Material.WOOD_SWORD));
         ItemStack bow = new ItemStack(Material.BOW);
-        bow.addEnchantment(Enchantment.ARROW_DAMAGE, 1);
+        bow.addEnchantment(Enchantment.ARROW_DAMAGE, 2);
         player.getInventory().setItem(1, bow);
         Potion splash = new Potion(PotionType.SPEED, 1);
         splash.setSplash(true);
