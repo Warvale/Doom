@@ -10,7 +10,7 @@ import org.bukkit.potion.PotionType;
 import java.util.ArrayList;
 
 public class ArcherKit implements Kit{
-    private int cost = 500;
+    private int cost = 200;
     public int getCost(){return this.cost;}
     private String name = "Archer";
     private Material icon = Material.BOW;
