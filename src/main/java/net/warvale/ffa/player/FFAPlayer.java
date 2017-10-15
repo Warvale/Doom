@@ -56,7 +56,7 @@ public class FFAPlayer {
 
     public double getKd() {
         double d = 0.0;
-        d = this.totalKills > 0 && this.totalDeaths == 0 ? (double)this.totalKills : (this.totalKills == 0 && this.totalDeaths == 0 ? 0.0 : (double)(this.totalKills / this.totalDeaths));
+        d = this.totalKills > 0 && this.totalDeaths == 0 ? (double)this.totalKills : (this.totalKills == 0 && this.totalDeaths == 0 ? 0.0 : (((double) this.totalKills) / this.totalDeaths));
         return d;
     }
 
