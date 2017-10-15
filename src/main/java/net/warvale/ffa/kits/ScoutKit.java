@@ -21,6 +21,7 @@ public class ScoutKit implements Kit{
         splash.setSplash(true);
         ItemStack potion = splash.toItemStack(1);
         ret.add(potion);
+        ret.add(new ItemStack(Material.GOLDEN_APPLE,1));
         return ret;
     }
 
@@ -50,6 +51,6 @@ public class ScoutKit implements Kit{
         
         player.getInventory().setItem(1, potion);
         player.getInventory().setItem(2, potion2);
-        player.getInventory().setItem(8, new ItemStack(Material.GOLDEN_APPLE, 2));
+        player.getInventory().setItem(3, new ItemStack(Material.GOLDEN_APPLE, 1));
     }
 }
