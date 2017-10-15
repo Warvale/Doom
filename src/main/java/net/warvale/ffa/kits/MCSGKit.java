@@ -15,6 +15,7 @@ public class MCSGKit implements Kit{
     public ArrayList<ItemStack> getKillRewards() {
         ArrayList<ItemStack> ret = new ArrayList<>();
         ret.add(new ItemStack(Material.ARROW,3));
+        ret.add(new ItemStack(Material.GOLDEN_APPLE,1));
         return ret;
     }
     public Material getIcon() { return icon; }
@@ -23,8 +24,11 @@ public class MCSGKit implements Kit{
         ItemStack[] armor = new ItemStack[4];
         armor[0] = new ItemStack(Material.GOLD_BOOTS);
         armor[1] = new ItemStack(Material.IRON_LEGGINGS);
-        armor[2] = new ItemStack(Material.LEATHER_CHESTPLATE);
+        armor[2] = new ItemStack(Material.GOLD_CHESTPLATE);
         armor[3] = new ItemStack(Material.CHAINMAIL_HELMET);
+        for (ItemStack stack : armor) {
+            stack.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
+        }
         player.getInventory().setArmorContents(armor);
         ItemStack sword = new ItemStack(Material.STONE_SWORD);
         sword.addEnchantment(Enchantment.DAMAGE_ALL, 2);
