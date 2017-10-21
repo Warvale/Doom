@@ -123,7 +123,7 @@ public class StatsGUI extends GUI implements Listener {
         xpMeta.setDisplayName("§8» §7Levelup:§a " + ffaPlayer.getXPtoNextLevel() + "§e XP §8«");
 
         xp.setItemMeta(xpMeta);
-        inv.setItem(4, xp);
+        inv.setItem(5, xp);
 
     }
 
