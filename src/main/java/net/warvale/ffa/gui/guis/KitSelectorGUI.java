@@ -49,6 +49,7 @@ public class KitSelectorGUI extends GUI implements Listener {
         kits.put("Scout", new ScoutKit());
         kits.put("MCSG", new MCSGKit());
         kits.put("Pyro", new PyroKit());
+        kits.put("Assassin", new AssassinKit());
     }
 
 
