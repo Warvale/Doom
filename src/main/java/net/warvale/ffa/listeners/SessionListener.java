@@ -64,13 +64,13 @@ public class SessionListener implements Listener {
 
         player.teleport(WarvaleFFA.get().getGame().getSpawn());
         KitSelectorGUI.giveKitSelectorItem(player);
-        player.getInventory().setHeldItemSlot(4);
+
         player.setHealth(20);
         for (PotionEffect effect : player.getActivePotionEffects())  // loop thru all active potion effects
             player.removePotionEffect(effect.getType()); // remove potion effects
         player.setFoodLevel(20);
         player.setLevel(ffaPlayer.getLevel());
-
+        
     }
 
     @EventHandler (priority = EventPriority.HIGH)

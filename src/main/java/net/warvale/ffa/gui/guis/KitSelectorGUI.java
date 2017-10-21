@@ -28,10 +28,19 @@ public class KitSelectorGUI extends GUI implements Listener {
 
     private final Map<String, Inventory> inventories = new HashMap<String, Inventory>();
     private Map<String, Kit> kits = new LinkedHashMap<>();
+    private static KitSelectorGUI INSTANCE;
 
+    public static KitSelectorGUI getINSTANCE() {
+        return INSTANCE;
+    }
+
+    public Map<String, Kit> getKits() {
+        return kits;
+    }
 
     @Override
     public void onSetup() {
+        INSTANCE = this;
         //Register kits here.
 
         kits.put("UHC", new UHCKit());
@@ -68,6 +77,7 @@ public class KitSelectorGUI extends GUI implements Listener {
             }
             player.getInventory().clear();
             kit.giveKit(player);
+            ffaPlayer.setLastKit(inv.getItem(event.getSlot()).getItemMeta().getDisplayName().substring(2));
             KitManager.setUUID(player.getUniqueId(), kit);
 
 
@@ -89,6 +99,8 @@ public class KitSelectorGUI extends GUI implements Listener {
                 dankmemes.setItemMeta(meta);
             }
             player.getInventory().setArmorContents(armor);
+
+
 
         }
 
@@ -168,6 +180,7 @@ public class KitSelectorGUI extends GUI implements Listener {
         meta.setDisplayName("§bKit Selector");
         guiopener.setItemMeta(meta);
         p.getInventory().setItem(4,guiopener);
+        p.getInventory().setHeldItemSlot(4);
     }
 
 }

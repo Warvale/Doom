@@ -20,7 +20,7 @@ public class AssassinKit implements Kit{
         Potion splash = new Potion(PotionType.SPEED, 1);
         splash.setSplash(true);
         ItemStack potion = splash.toItemStack(1);
-        ret.add(new ItemStack(Material.SNOWBALL,4));
+        ret.add(new ItemStack(Material.SNOW_BALL    ,4));
         ret.add(new ItemStack(Material.GOLDEN_APPLE,1));
         return ret;
     }

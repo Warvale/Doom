@@ -69,7 +69,7 @@ public class DeathListener implements Listener {
         FFAPlayer ffakiller = PlayerManager.getInstance().getFFAPlayer(killer.getUniqueId());
         ffakiller.setEmbers(ffakiller.getEmbers()+20);
         killer.sendMessage(ChatColor.GOLD + "+20 Embers");
-        killer.playSound(player.getLocation(), Sound.ANVIL_BREAK,10,1);
+        killer.playSound(player.getLocation(), Sound.LEVEL_UP,10,1);
 
 
         if (ffaPlayer.getKillStreak() >= 5) {

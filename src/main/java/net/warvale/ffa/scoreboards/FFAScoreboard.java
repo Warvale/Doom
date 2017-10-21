@@ -1,6 +1,8 @@
 package net.warvale.ffa.scoreboards;
 
 import com.google.common.collect.Maps;
+import net.warvale.ffa.player.FFAPlayer;
+import net.warvale.ffa.player.PlayerManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -8,8 +10,6 @@ import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.Team;
-import net.warvale.ffa.player.FFAPlayer;
-import net.warvale.ffa.player.PlayerManager;
 
 import java.util.Map;
 import java.util.UUID;
@@ -68,6 +68,7 @@ public class FFAScoreboard {
         highestKS.setSuffix("reak: §7");
 
 
+
         scoreboards.put(player.getUniqueId(), scoreboard);
     }
 
@@ -116,7 +117,7 @@ public class FFAScoreboard {
             Objective objective = getScoreboards().get(online.getUniqueId()).getObjective("game");
             Team players = getScoreboards().get(online.getUniqueId()).getTeam("Players");
             if (objective != null && players != null) {
-
+                objective.getScore("     ").setScore(12);
                 players.setSuffix(" §7" + String.valueOf(Bukkit.getServer().getOnlinePlayers().size()));
 
                 objective.getScore("§bPlayers:").setScore(13);
@@ -127,6 +128,8 @@ public class FFAScoreboard {
 
     }
 
+
+
     public void updateLevel() {
 
         for (Player online : Bukkit.getServer().getOnlinePlayers()) {
@@ -136,7 +139,7 @@ public class FFAScoreboard {
             Objective objective = getScoreboards().get(online.getUniqueId()).getObjective("game");
             Team level = getScoreboards().get(online.getUniqueId()).getTeam("Level");
             if (objective != null && level != null) {
-                objective.getScore("    ").setScore(12);
+
 
                 level.setSuffix(" §7" + String.valueOf(ffaPlayer.getLevel()));
 

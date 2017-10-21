@@ -109,6 +109,10 @@
             <id>comphenix-rep</id>
             <url>http://repo.comphenix.net/content/groups/public</url>
         </repository>
+        <repository>
+            <id>pex-repo</id>
+            <url>http://pex-repo.aoeu.xyz</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -167,6 +171,11 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>ru.tehkode</groupId>
+            <artifactId>PermissionsEx</artifactId>
+            <version>1.23.2-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

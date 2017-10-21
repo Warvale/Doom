@@ -25,6 +25,7 @@ public class FFAPlayer {
     private int embers = 0;
     private int xp = 0;
     private String purchasedKits = "";
+    private String lastKit = "";
 
 
     public FFAPlayer(UUID uuid) {
@@ -32,6 +33,14 @@ public class FFAPlayer {
         if (WarvaleFFA.get().getGame().isStatsEnabled()) {
             this.loadData();
         }
+    }
+
+    public String getLastKit() {
+        return lastKit;
+    }
+
+    public void setLastKit(String lastKit) {
+        this.lastKit = lastKit;
     }
 
     public UUID getUUID() {
@@ -77,7 +86,7 @@ public class FFAPlayer {
         return lvl;
     }
     public int getXPtoNextLevel() {
-        return XPManager.getLevelupxp()[this.getLevel()-2]-(getXp() - getUselessXP());
+        return XPManager.getLevelupxp()[this.getLevel()] - this.getXp();
     }
     public int getUselessXP() {
         int useless = 0;
@@ -181,6 +190,7 @@ public class FFAPlayer {
                            FFAPlayer.this.setEmbers(set.getInt("embers"));
                            FFAPlayer.this.setXp(set.getInt("xp"));
                            FFAPlayer.this.setPurchasedKits(set.getString("purchasedKits"));
+                           FFAPlayer.this.setLastKit(set.getString("lastKit"));
 
                        }
                        set.close();
@@ -215,7 +225,7 @@ public class FFAPlayer {
                     connection = WarvaleFFA.getStorageBackend().getPoolManager().getConnection();
 
                     stmt = connection.prepareStatement("INSERT INTO `" + DatabaseUtils.getTable() + "` " +
-                            "(uuid, kills, deaths, killstreak, embers, xp, purchasedKits) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                            "(uuid, kills, deaths, killstreak, embers, xp, purchasedKits, lastKit) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
                     stmt.setString(1, FFAPlayer.this.uuid.toString());
                     stmt.setInt(2, FFAPlayer.this.getTotalKills());
                     stmt.setInt(3, FFAPlayer.this.getTotalDeaths());
@@ -223,6 +233,7 @@ public class FFAPlayer {
                     stmt.setInt(5, FFAPlayer.this.getEmbers());
                     stmt.setInt(6, FFAPlayer.this.getXp());
                     stmt.setString(7, FFAPlayer.this.getPurchasedKits());
+                    stmt.setString(8, FFAPlayer.this.getLastKit());
                     stmt.execute();
                     stmt.close();
 
@@ -291,6 +302,12 @@ public class FFAPlayer {
 
                             stmt = connection.prepareStatement("UPDATE `" + DatabaseUtils.getTable() + "` SET purchasedKits = ? WHERE uuid = ?;");
                             stmt.setString(1, FFAPlayer.this.getPurchasedKits());
+                            stmt.setString(2, FFAPlayer.this.uuid.toString());
+                            stmt.executeUpdate();
+                            stmt.close();
+
+                            stmt = connection.prepareStatement("UPDATE `" + DatabaseUtils.getTable() + "` SET lastKit = ? WHERE uuid = ?;");
+                            stmt.setString(1, FFAPlayer.this.getLastKit());
                             stmt.setString(2, FFAPlayer.this.uuid.toString());
                             stmt.executeUpdate();
                             stmt.close();

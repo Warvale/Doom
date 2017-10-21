@@ -1,5 +1,7 @@
 package net.warvale.ffa.gui.guis;
 
+import net.warvale.ffa.gui.GUI;
+import net.warvale.ffa.player.FFAPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
@@ -8,8 +10,6 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import net.warvale.ffa.gui.GUI;
-import net.warvale.ffa.player.FFAPlayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -107,11 +107,20 @@ public class StatsGUI extends GUI implements Listener {
         embers.setItemMeta(embersMeta);
         inv.setItem(3, embers);
 
-        //Embers
+        //Level
         ItemStack xp = new ItemStack(Material.EXP_BOTTLE, 1);
         ItemMeta xpMeta = xp.getItemMeta();
 
         xpMeta.setDisplayName("§8» §7Level:§a " + ffaPlayer.getLevel() + " §8«");
+
+        xp.setItemMeta(xpMeta);
+        inv.setItem(4, xp);
+
+        //XP till levelup
+        ItemStack xpuntil = new ItemStack(Material.ENDER_PORTAL, 1);
+        ItemMeta xpuntilMeta = xpuntil.getItemMeta();
+
+        xpMeta.setDisplayName("§8» §7Levelup:§a " + ffaPlayer.getXPtoNextLevel() + "§e XP §8«");
 
         xp.setItemMeta(xpMeta);
         inv.setItem(4, xp);

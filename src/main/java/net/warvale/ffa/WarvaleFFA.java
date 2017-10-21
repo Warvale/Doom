@@ -1,10 +1,5 @@
 package net.warvale.ffa;
 
-import net.warvale.ffa.gui.guis.KitSelectorGUI;
-import org.bukkit.Bukkit;
-import org.bukkit.event.Listener;
-import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.java.JavaPlugin;
 import net.warvale.ffa.commands.CommandHandler;
 import net.warvale.ffa.config.ConfigManager;
 import net.warvale.ffa.config.DatabaseCredentials;
@@ -14,7 +9,13 @@ import net.warvale.ffa.gui.GUIManager;
 import net.warvale.ffa.listeners.*;
 import net.warvale.ffa.message.MessageManager;
 import net.warvale.ffa.scoreboards.FFAScoreboard;
+import net.warvale.ffa.tasks.PlayerlistTask;
 import net.warvale.ffa.tasks.ScoreboardTask;
+import org.bukkit.Bukkit;
+import org.bukkit.event.Listener;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
+
 import java.util.logging.Level;
 
 public class WarvaleFFA extends JavaPlugin {
@@ -57,6 +58,7 @@ public class WarvaleFFA extends JavaPlugin {
         commandHandler.registerCommands(gui);
 
         ScoreboardTask.getInstance().runTaskTimer(this, 20, 20);
+        PlayerlistTask.getInstance().runTaskTimer(this, 20, 20);
 
         try {
             game.getFFAWorld().setGameRuleValue("naturalRegeneration", "false");
@@ -70,6 +72,7 @@ public class WarvaleFFA extends JavaPlugin {
         /*if (getGame().isStatsEnabled()) {
             DatabaseUtils.loadTables();
         }*/
+
     }
 
     public void onDisable() {
