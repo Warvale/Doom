@@ -117,7 +117,7 @@ public class StatsGUI extends GUI implements Listener {
         inv.setItem(4, xp);
 
         //XP till levelup
-        ItemStack xpuntil = new ItemStack(Material.ENDER_PORTAL, 1);
+        ItemStack xpuntil = new ItemStack(Material.ENDER_PEARL, 1);
         ItemMeta xpuntilMeta = xpuntil.getItemMeta();
 
         xpMeta.setDisplayName("§8» §7Levelup:§a " + ffaPlayer.getXPtoNextLevel() + "§e XP §8«");
