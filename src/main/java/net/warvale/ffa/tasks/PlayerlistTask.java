@@ -26,7 +26,7 @@ public class PlayerlistTask extends BukkitRunnable {
         for (Player player : Bukkit.getServer().getOnlinePlayers()) {
             FFAPlayer ffaPlayer = PlayerManager.getInstance().getFFAPlayer(player.getUniqueId());
             player.setPlayerListName(ChatColor.GRAY+"["+XPManager.getLevelColor(ffaPlayer.getLevel())+ffaPlayer.getLevel()+ChatColor.GRAY+"] " + ChatColor.translateAlternateColorCodes('&', PermissionsEx.getUser(player.getName()).getPrefix()) + player.getName());
-            player.setDisplayName(ChatColor.GRAY+"["+ XPManager.getLevelColor(ffaPlayer.getLevel())+ffaPlayer.getLevel()+ChatColor.GRAY+"] " + ChatColor.translateAlternateColorCodes('&', PermissionsEx.getUser(player.getName()).getPrefix()) +ChatColor.RESET+ player.getName());
+            player.setDisplayName(ChatColor.GRAY+"["+ XPManager.getLevelColor(ffaPlayer.getLevel())+ffaPlayer.getLevel()+ChatColor.GRAY+"] " + ChatColor.translateAlternateColorCodes('&', PermissionsEx.getUser(player.getName()).getPrefix()) + player.getName());
         }
 
     }

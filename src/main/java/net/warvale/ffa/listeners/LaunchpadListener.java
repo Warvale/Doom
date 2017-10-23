@@ -36,6 +36,9 @@ public class LaunchpadListener implements Listener {
             Vector velc = e.getPlayer().getVelocity();
             velc.setY(1.0F);
             e.getPlayer().setVelocity(velc);
+            if (ffaPlayer.getLastKit() == null) {
+                return;
+            }
             Kit kit = KitSelectorGUI.getINSTANCE().getKits().get(ffaPlayer.getLastKit());
             player.getInventory().clear();
             kit.giveKit(player);
