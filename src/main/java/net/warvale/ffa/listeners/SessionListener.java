@@ -18,6 +18,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.inventory.ItemStack;
@@ -28,7 +29,9 @@ public class SessionListener implements Listener {
     public SessionListener(WarvaleFFA plugin){
         this.plugin = plugin;
     }
-
+    public void onInvClick(InventoryClickEvent event) {
+        if (event.getCurrentItem().getItemMeta().getDisplayName().equals("§bKit Selector")) event.setCancelled(true);
+    }
     public void onEpearlDmg(PlayerTeleportEvent event) {
         if (!event.getCause().equals(EntityType.ENDER_PEARL)) return;
         event.setCancelled(true);
